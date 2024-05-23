@@ -11,13 +11,13 @@ namespace ShoppingAppAPI.Models
         [Required]
         public int ProductID { get; set; }
         [Required]
-        public int UserID { get; set; }
+        public int CustomerID { get; set; }
         [Required]
         public int Rating { get; set; }
         public string? Comment { get; set; }
         [Required]
         public DateTime Review_Date { get; set; }
         public Product Product { get; set; }
-        public User User { get; set; }
+        public Customer Customer { get; set; }
     }
 }

@@ -11,12 +11,12 @@ namespace ShoppingAppAPI.Models
         public int CartID { get; set; }
 
         [Required]
-        public int UserID { get; set; }
+        public int CustomerID { get; set; }
         public CartStatus Cart_Status { get; set; }
         [Required]
         public DateTime Last_Updated { get; set; }
 
-        public User User { get; set; }
+        public Customer Customer { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
     }
 }

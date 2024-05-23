@@ -9,6 +9,8 @@ namespace ShoppingAppAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductID { get; set; }
         [Required]
+        public int SellerID { get; set; }
+        [Required]
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
@@ -24,9 +26,10 @@ namespace ShoppingAppAPI.Models
         public DateTime Creation_Date { get; set; }
         [Required]
         public DateTime Last_Updated { get; set; }
+        public Seller Seller { get; set; }
         public Category Category { get; set; }
         public ICollection<Review> Reviews { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
-        public ICollection<CartItem> CartItems { get; set; }
+        //public ICollection<CartItem> CartItems { get; set; }
     }
 }

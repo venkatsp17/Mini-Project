@@ -10,7 +10,7 @@ namespace ShoppingAppAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
         [Required]
-        public int UserID { get; set; }
+        public int CustomerID { get; set; }
         public int? Success_PaymentID { get; set; }
         [Required]
         public DateTime Order_Date { get; set; }
@@ -23,7 +23,7 @@ namespace ShoppingAppAPI.Models
         public string Shipping_Method { get; set; }
         public decimal Shipping_Cost { get; set; }
         public DateTime Last_Updated { get; set; }
-        public User User { get; set; }
+        public Customer Customer { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
         public ICollection<Payment> Payments { get; set; }
         public Refund Refund { get; set; }

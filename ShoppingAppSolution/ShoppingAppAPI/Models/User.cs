@@ -17,10 +17,8 @@ namespace ShoppingAppAPI.Models
         [Required]
         public string Password_Hashkey { get; set; }
         [Required]
-        public UserRole Role { get; set; }
-        public UserDetails UserDetails { get; set; }
-        public ICollection<Order> Orders { get; set; }
-        public ICollection<Review> Reviews { get; set; }
-        public Cart Cart { get; set; }
+        public bool IsAdmin { get; set; }
+        public Customer Customer { get; set; }
+        public Seller Seller { get; set; }
     }
 }

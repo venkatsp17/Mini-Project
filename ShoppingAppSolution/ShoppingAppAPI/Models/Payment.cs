@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using static ShoppingAppAPI.Models.Enums;
 
 namespace ShoppingAppAPI.Models
 {
@@ -17,7 +18,7 @@ namespace ShoppingAppAPI.Models
         [Required]
         public DateTime Transaction_Date { get; set; }
         [Required]
-        public string Payment_Status { get; set; }
+        public PaymentStatus Payment_Status { get; set; }
         public Order Order { get; set; }
     }
 }

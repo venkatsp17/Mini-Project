@@ -12,7 +12,7 @@ using ShoppingAppAPI.Contexts;
 namespace ShoppingAppAPI.Migrations
 {
     [DbContext(typeof(ShoppingAppContext))]
-    [Migration("20240522163421_Initial")]
+    [Migration("20240523163951_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,13 +35,16 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<int>("Cart_Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Last_Updated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("CartID");
+
+                    b.HasIndex("CustomerID")
+                        .IsUnique();
 
                     b.ToTable("Carts");
                 });
@@ -57,8 +60,8 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<int>("CartID")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
@@ -95,6 +98,57 @@ namespace ShoppingAppAPI.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("ShoppingAppAPI.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"), 1L, 1);
+
+                    b.Property<string>("Account_Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Date_of_Birth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Last_Login")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Profile_Picture_URL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("CustomerID");
+
+                    b.HasIndex("UserID")
+                        .IsUnique();
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("ShoppingAppAPI.Models.Order", b =>
                 {
                     b.Property<int>("OrderID")
@@ -106,6 +160,9 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Last_Updated")
                         .HasColumnType("datetime2");
@@ -129,12 +186,9 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<decimal>("Total_Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("CustomerID");
 
                     b.ToTable("Orders");
                 });
@@ -186,9 +240,8 @@ namespace ShoppingAppAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Payment_Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Payment_Status")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Transaction_Date")
                         .HasColumnType("datetime2");
@@ -236,12 +289,17 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("SellerID")
+                        .HasColumnType("int");
+
                     b.Property<int>("Stock_Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("ProductID");
 
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("SellerID");
 
                     b.ToTable("Products");
                 });
@@ -293,6 +351,9 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
@@ -302,51 +363,22 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<DateTime>("Review_Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("ReviewID");
 
-                    b.HasIndex("ProductID");
+                    b.HasIndex("CustomerID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("ShoppingAppAPI.Models.User", b =>
+            modelBuilder.Entity("ShoppingAppAPI.Models.Seller", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("SellerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password_Hashkey")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ShoppingAppAPI.Models.UserDetails", b =>
-                {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SellerID"), 1L, 1);
 
                     b.Property<string>("Account_Status")
                         .IsRequired()
@@ -356,7 +388,7 @@ namespace ShoppingAppAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date_of_Birth")
+                    b.Property<DateTime?>("Date_of_Birth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -364,10 +396,9 @@ namespace ShoppingAppAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Last_Login")
+                    b.Property<DateTime?>("Last_Login")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -381,9 +412,54 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<string>("Profile_Picture_URL")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("SellerID");
+
+                    b.HasIndex("UserID")
+                        .IsUnique();
+
+                    b.ToTable("Sellers");
+                });
+
+            modelBuilder.Entity("ShoppingAppAPI.Models.User", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password_Hashkey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserID");
 
-                    b.ToTable("UserDetails");
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ShoppingAppAPI.Models.Cart", b =>
+                {
+                    b.HasOne("ShoppingAppAPI.Models.Customer", "Customer")
+                        .WithOne("Cart")
+                        .HasForeignKey("ShoppingAppAPI.Models.Cart", "CustomerID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.CartItem", b =>
@@ -395,9 +471,9 @@ namespace ShoppingAppAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("ShoppingAppAPI.Models.Product", "Product")
-                        .WithMany("CartItems")
+                        .WithMany()
                         .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cart");
@@ -405,15 +481,26 @@ namespace ShoppingAppAPI.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ShoppingAppAPI.Models.Order", b =>
+            modelBuilder.Entity("ShoppingAppAPI.Models.Customer", b =>
                 {
                     b.HasOne("ShoppingAppAPI.Models.User", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserID")
+                        .WithOne("Customer")
+                        .HasForeignKey("ShoppingAppAPI.Models.Customer", "UserID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ShoppingAppAPI.Models.Order", b =>
+                {
+                    b.HasOne("ShoppingAppAPI.Models.Customer", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.OrderDetail", b =>
@@ -454,7 +541,15 @@ namespace ShoppingAppAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("ShoppingAppAPI.Models.Seller", "Seller")
+                        .WithMany("Products")
+                        .HasForeignKey("SellerID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("Seller");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Refund", b =>
@@ -470,53 +565,52 @@ namespace ShoppingAppAPI.Migrations
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Review", b =>
                 {
+                    b.HasOne("ShoppingAppAPI.Models.Customer", "Customer")
+                        .WithMany("Reviews")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("ShoppingAppAPI.Models.Product", "Product")
                         .WithMany("Reviews")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ShoppingAppAPI.Models.User", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.Navigation("Customer");
 
                     b.Navigation("Product");
-
-                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ShoppingAppAPI.Models.User", b =>
+            modelBuilder.Entity("ShoppingAppAPI.Models.Seller", b =>
                 {
-                    b.HasOne("ShoppingAppAPI.Models.Cart", "Cart")
-                        .WithOne("User")
-                        .HasForeignKey("ShoppingAppAPI.Models.User", "UserID")
+                    b.HasOne("ShoppingAppAPI.Models.User", "User")
+                        .WithOne("Seller")
+                        .HasForeignKey("ShoppingAppAPI.Models.Seller", "UserID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ShoppingAppAPI.Models.UserDetails", "UserDetails")
-                        .WithOne("User")
-                        .HasForeignKey("ShoppingAppAPI.Models.User", "UserID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("UserDetails");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Cart", b =>
                 {
                     b.Navigation("CartItems");
-
-                    b.Navigation("User")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("ShoppingAppAPI.Models.Customer", b =>
+                {
+                    b.Navigation("Cart")
+                        .IsRequired();
+
+                    b.Navigation("Orders");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Order", b =>
@@ -531,23 +625,22 @@ namespace ShoppingAppAPI.Migrations
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Product", b =>
                 {
-                    b.Navigation("CartItems");
-
                     b.Navigation("OrderDetails");
 
                     b.Navigation("Reviews");
                 });
 
-            modelBuilder.Entity("ShoppingAppAPI.Models.User", b =>
+            modelBuilder.Entity("ShoppingAppAPI.Models.Seller", b =>
                 {
-                    b.Navigation("Orders");
-
-                    b.Navigation("Reviews");
+                    b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("ShoppingAppAPI.Models.UserDetails", b =>
+            modelBuilder.Entity("ShoppingAppAPI.Models.User", b =>
                 {
-                    b.Navigation("User")
+                    b.Navigation("Customer")
+                        .IsRequired();
+
+                    b.Navigation("Seller")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
