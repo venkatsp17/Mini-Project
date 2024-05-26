@@ -168,6 +168,9 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<DateTime>("Order_Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("SellerID")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Shipping_Cost")
                         .HasColumnType("decimal(18,2)");
 
@@ -187,6 +190,8 @@ namespace ShoppingAppAPI.Migrations
                     b.HasKey("OrderID");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("SellerID");
 
                     b.ToTable("Orders");
                 });
@@ -429,14 +434,22 @@ namespace ShoppingAppAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
 
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Password")
+                    b.Property<string>("AccountStatus")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password_Hashkey")
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<byte[]>("Password")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("Password_Hashkey")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -481,13 +494,11 @@ namespace ShoppingAppAPI.Migrations
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Customer", b =>
                 {
-                    b.HasOne("ShoppingAppAPI.Models.User", "User")
+                    b.HasOne("ShoppingAppAPI.Models.User", null)
                         .WithOne("Customer")
                         .HasForeignKey("ShoppingAppAPI.Models.Customer", "UserID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Order", b =>
@@ -498,7 +509,15 @@ namespace ShoppingAppAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("ShoppingAppAPI.Models.Seller", "Seller")
+                        .WithMany("Orders")
+                        .HasForeignKey("SellerID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Customer");
+
+                    b.Navigation("Seller");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.OrderDetail", b =>
@@ -582,13 +601,11 @@ namespace ShoppingAppAPI.Migrations
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Seller", b =>
                 {
-                    b.HasOne("ShoppingAppAPI.Models.User", "User")
+                    b.HasOne("ShoppingAppAPI.Models.User", null)
                         .WithOne("Seller")
                         .HasForeignKey("ShoppingAppAPI.Models.Seller", "UserID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Cart", b =>
@@ -630,6 +647,8 @@ namespace ShoppingAppAPI.Migrations
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Seller", b =>
                 {
+                    b.Navigation("Orders");
+
                     b.Navigation("Products");
                 });
 

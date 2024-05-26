@@ -13,11 +13,13 @@ namespace ShoppingAppAPI.Models
         [Required]
         public string Username { get; set; }
         [Required]
-        public string Password { get; set; }
+        public byte[] Password { get; set; }
         [Required]
-        public string Password_Hashkey { get; set; }
+        public byte[] Password_Hashkey { get; set; }
         [Required]
         public bool IsAdmin { get; set; }
+        [Required]
+        public string Role { get; set; }
         public Customer Customer { get; set; }
         public Seller Seller { get; set; }
     }

@@ -24,8 +24,7 @@ namespace ShoppingAppAPI.Models
         [Required]
         public string Account_Status { get; set; }
         public DateTime? Last_Login { get; set; }
-
-        public User User { get; set; }
         public ICollection<Product> Products { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

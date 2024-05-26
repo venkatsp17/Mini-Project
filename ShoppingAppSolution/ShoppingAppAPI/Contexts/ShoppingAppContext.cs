@@ -25,16 +25,28 @@ namespace ShoppingAppAPI.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>()
-             .HasOne(c => c.User)
-             .WithOne(u => u.Customer)
+            modelBuilder.Entity<User>()
+             .HasOne(u => u.Customer)
+             .WithOne()
              .HasForeignKey<Customer>(c => c.UserID)
              .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Seller>()
-                .HasOne(s => s.User)
-                .WithOne(u => u.Seller)
-                .HasForeignKey<Seller>(s => s.UserID)
+            modelBuilder.Entity<User>()
+             .HasOne(u => u.Seller)
+             .WithOne()
+             .HasForeignKey<Seller>(c => c.UserID)
+             .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Order>()
+               .HasOne(o => o.Seller)
+               .WithMany(s => s.Orders)
+               .HasForeignKey(o => o.SellerID)
+               .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Customer)
+                .WithMany(c => c.Orders)
+                .HasForeignKey(o => o.CustomerID)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Product>()
@@ -61,15 +73,9 @@ namespace ShoppingAppAPI.Contexts
                 .HasForeignKey(r => r.CustomerID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Order>()
-                .HasOne(o => o.Customer)
-                .WithMany(c => c.Orders)
-                .HasForeignKey(o => o.CustomerID)
-                .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.Order)
-                .WithMany(o => o.Payments)
+                .WithMany(o => o.Payments) 
                 .HasForeignKey(p => p.OrderID)
                 .OnDelete(DeleteBehavior.Restrict);
 

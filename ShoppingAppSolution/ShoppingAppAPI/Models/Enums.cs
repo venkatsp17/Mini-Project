@@ -6,6 +6,7 @@
         {
             Customer,
             Seller,
+            Both,
             Admin
         }
 

@@ -11,6 +11,8 @@ namespace ShoppingAppAPI.Models
         public int OrderID { get; set; }
         [Required]
         public int CustomerID { get; set; }
+        [Required]
+        public int SellerID { get; set; }
         public int? Success_PaymentID { get; set; }
         [Required]
         public DateTime Order_Date { get; set; }
@@ -24,6 +26,7 @@ namespace ShoppingAppAPI.Models
         public decimal Shipping_Cost { get; set; }
         public DateTime Last_Updated { get; set; }
         public Customer Customer { get; set; }
+        public Seller Seller { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
         public ICollection<Payment> Payments { get; set; }
         public Refund Refund { get; set; }
