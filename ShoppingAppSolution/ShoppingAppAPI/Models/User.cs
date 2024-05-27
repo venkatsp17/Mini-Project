@@ -19,7 +19,7 @@ namespace ShoppingAppAPI.Models
         [Required]
         public bool IsAdmin { get; set; }
         [Required]
-        public string Role { get; set; }
+        public UserRole Role { get; set; }
         public Customer Customer { get; set; }
         public Seller Seller { get; set; }
     }

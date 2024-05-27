@@ -1,10 +1,10 @@
 ﻿namespace ShoppingAppAPI.Exceptions
 {
-    public class CannotLoginException : Exception
+    public class UnableToLoginException : Exception
     {
         string message;
 
-        public CannotLoginException(string msg)
+        public UnableToLoginException(string msg)
         {
             message = msg;
         }

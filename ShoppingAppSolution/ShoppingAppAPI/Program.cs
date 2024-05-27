@@ -6,6 +6,8 @@ using ShoppingAppAPI.Contexts;
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Repositories.Classes;
 using ShoppingAppAPI.Repositories.Interfaces;
+using ShoppingAppAPI.Services.Classes;
+using ShoppingAppAPI.Services.Interfaces;
 using System.Text;
 
 namespace ShoppingAppAPI
@@ -21,6 +23,9 @@ namespace ShoppingAppAPI
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddLogging(l => l.AddLog4Net());
+
 
             builder.Services.AddSwaggerGen(option =>
             {
@@ -82,12 +87,16 @@ namespace ShoppingAppAPI
             builder.Services.AddScoped<IRepository<int, Product>, ProductRepository>();
             builder.Services.AddScoped<IRepository<int, Refund>, RefundRepository>();
             builder.Services.AddScoped<IRepository<int, Review>, ReviewRepository>();
-            builder.Services.AddScoped<IRepository<int, Seller>, SellerRepository>();
+            builder.Services.AddScoped<ISellerRepository, SellerRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IRegistrationRepository, RegistrationRepository>();
             #endregion
 
             #region services
-
+            builder.Services.AddScoped<ITokenServices, TokenServices>();
+            builder.Services.AddScoped<ICustomerServices, CustomerServices>();
+            builder.Services.AddScoped<ISellerServices, SellerServices>();
+            builder.Services.AddScoped<IUserServices, UserServices>();
             #endregion
 
 

@@ -22,7 +22,7 @@ namespace ShoppingAppAPI.Services.Classes
             string token = string.Empty;
             var claims = new List<Claim>(){
                 new Claim("UID",user.UserID.ToString()),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Role.ToString())
             };
             var credentials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256);
             var myToken = new JwtSecurityToken(null, null, claims, expires: DateTime.Now.AddHours(2), signingCredentials: credentials);

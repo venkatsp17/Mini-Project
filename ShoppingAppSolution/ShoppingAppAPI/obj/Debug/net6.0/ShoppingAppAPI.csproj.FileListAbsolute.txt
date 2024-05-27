@@ -69,3 +69,6 @@ C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\obj\Debug\ne
 C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\obj\Debug\net6.0\ref\ShoppingAppAPI.dll
 C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\bin\Debug\net6.0\log4net.dll
+C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.Log4Net.AspNetCore.dll
+C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\bin\Debug\net6.0\log4net.config

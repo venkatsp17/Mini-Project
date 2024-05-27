@@ -1,9 +1,9 @@
 ﻿namespace ShoppingAppAPI.Exceptions
 {
-    public class NoAvailableItem : Exception
+    public class NoAvailableItemException : Exception
     {
         string message;
-        public NoAvailableItem(string Name)
+        public NoAvailableItemException(string Name)
         {
             message = $"No {Name} available!";
         }
