@@ -84,7 +84,7 @@ namespace ShoppingAppAPI
             builder.Services.AddScoped<IRepository<int, OrderDetail>, OrderDetailRepository>();
             builder.Services.AddScoped<IRepository<int, Order>, OrderRepository>();
             builder.Services.AddScoped<IRepository<int, Payment>, PaymentRepository>();
-            builder.Services.AddScoped<IRepository<int, Product>, ProductRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IRepository<int, Refund>, RefundRepository>();
             builder.Services.AddScoped<IRepository<int, Review>, ReviewRepository>();
             builder.Services.AddScoped<ISellerRepository, SellerRepository>();
@@ -96,6 +96,8 @@ namespace ShoppingAppAPI
             builder.Services.AddScoped<ITokenServices, TokenServices>();
             builder.Services.AddScoped<ICustomerServices, CustomerServices>();
             builder.Services.AddScoped<ISellerServices, SellerServices>();
+            builder.Services.AddScoped<IProductServices, ProductServices>();
+            builder.Services.AddScoped<IOrderServices, OrderServices>();
             builder.Services.AddScoped<IUserServices, UserServices>();
             #endregion
 

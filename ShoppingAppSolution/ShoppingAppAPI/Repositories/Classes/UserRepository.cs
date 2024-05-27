@@ -29,7 +29,7 @@ namespace ShoppingAppAPI.Repositories.Classes
         {
             var user = await _context.Users
                   .Include(u => u.Seller)
-                  .FirstOrDefaultAsync(u => u.Customer.Email == email);
+                  .FirstOrDefaultAsync(u => u.Seller.Email == email);
             return user;
         }
     }
