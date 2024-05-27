@@ -1,4 +1,4 @@
-# E-Commerce Platform Functionalities
+# Shopping APP Functionalities
 
 ---
 
