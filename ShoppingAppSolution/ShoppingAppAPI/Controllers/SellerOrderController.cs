@@ -23,9 +23,9 @@ namespace ShoppingAppAPI.Controllers
 
         [Authorize(Roles = "Seller")]
         [HttpGet("ViewAllActiveOrders")]
-        [ProducesResponseType(typeof(IEnumerable<OrderReturnDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<SellerOrderReturnDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<IEnumerable<OrderReturnDTO>>> ViewAllActiveOrders(int SellerID)
+        public async Task<ActionResult<IEnumerable<SellerOrderReturnDTO>>> ViewAllActiveOrders(int SellerID)
         {
             try
             {
@@ -44,9 +44,9 @@ namespace ShoppingAppAPI.Controllers
 
         [Authorize(Roles = "Seller")]
         [HttpPut("UpdateOrderStatus")]
-        [ProducesResponseType(typeof(OrderReturnDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SellerOrderReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<OrderReturnDTO>> UpdateOrderStatus(OrderStatus orderStatus, int OrderID)
+        public async Task<ActionResult<SellerOrderReturnDTO>> UpdateOrderStatus(OrderStatus orderStatus, int OrderID)
         {
             try
             {

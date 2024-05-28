@@ -22,26 +22,7 @@ namespace ShoppingAppAPI.Controllers
             _productServices = productServices;
         }
 
-        [Authorize]
-        [HttpGet("GetProductsByName")]
-        [ProducesResponseType(typeof(IEnumerable<CustomerGetProductDTO>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<IEnumerable<CustomerGetProductDTO>>> GetProductsByName(string productName)
-        {
-            try
-            {
-                var result = await _productServices.GetProductsByName(productName);
-                return Ok(result);
-            }
-            catch (NoAvailableItemException ex)
-            {
-                return NotFound(new ErrorModel(404, ex.Message));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
-            }
-        }
+      
 
         [Authorize(Roles = "Seller")]
         [HttpPost("AddProduct")]
