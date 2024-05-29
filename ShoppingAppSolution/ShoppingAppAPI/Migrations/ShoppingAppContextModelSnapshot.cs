@@ -168,9 +168,6 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<DateTime>("Order_Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SellerID")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Shipping_Cost")
                         .HasColumnType("decimal(18,2)");
 
@@ -190,8 +187,6 @@ namespace ShoppingAppAPI.Migrations
                     b.HasKey("OrderID");
 
                     b.HasIndex("CustomerID");
-
-                    b.HasIndex("SellerID");
 
                     b.ToTable("Orders");
                 });
@@ -213,6 +208,9 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("SellerID")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Unit_Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -221,6 +219,8 @@ namespace ShoppingAppAPI.Migrations
                     b.HasIndex("OrderID");
 
                     b.HasIndex("ProductID");
+
+                    b.HasIndex("SellerID");
 
                     b.ToTable("OrderDetails");
                 });
@@ -473,7 +473,7 @@ namespace ShoppingAppAPI.Migrations
                     b.HasOne("ShoppingAppAPI.Models.Cart", "Cart")
                         .WithMany("CartItems")
                         .HasForeignKey("CartID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ShoppingAppAPI.Models.Product", "Product")
@@ -504,15 +504,7 @@ namespace ShoppingAppAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ShoppingAppAPI.Models.Seller", "Seller")
-                        .WithMany("Orders")
-                        .HasForeignKey("SellerID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Customer");
-
-                    b.Navigation("Seller");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.OrderDetail", b =>
@@ -529,9 +521,17 @@ namespace ShoppingAppAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("ShoppingAppAPI.Models.Seller", "Seller")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("SellerID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+
+                    b.Navigation("Seller");
                 });
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Payment", b =>
@@ -642,7 +642,7 @@ namespace ShoppingAppAPI.Migrations
 
             modelBuilder.Entity("ShoppingAppAPI.Models.Seller", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("OrderDetails");
 
                     b.Navigation("Products");
                 });

@@ -12,6 +12,8 @@ namespace ShoppingAppAPI.Services.Interfaces
 
         Task<CustomerOrderReturnDTO> PlaceOrder(PlaceOrderDTO placeOrderDTO);
 
-        Task<IEnumerable<CustomerOrderReturnDTO>> ViewOrderHistory(PlaceOrderDTO placeOrderDTO);
+        Task<IEnumerable<CustomerOrderReturnDTO>> ViewCustomerOrderHistory(int CustomerID);
+
+        Task<CustomerOrderReturnDTO> CustomerCancelOrder(int OrderID);
     }
 }

@@ -12,7 +12,6 @@ namespace ShoppingAppAPI.Services.Classes
     public class ProductServices : IProductServices
     {
         private readonly IProductRepository _productRepository;
-        private readonly SellerMapper _sellerMapper;
 
         public ProductServices(IProductRepository productRepository)
         {

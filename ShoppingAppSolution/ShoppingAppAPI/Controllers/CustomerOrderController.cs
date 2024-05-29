@@ -45,5 +45,51 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet("ViewOrderHistory")]
+        [ProducesResponseType(typeof(IEnumerable<CustomerOrderReturnDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<CustomerOrderReturnDTO>>> ViewOrderHistory(int CustomerID)
+        {
+            try
+            {
+                var result = await _orderServices.ViewCustomerOrderHistory(CustomerID);
+                return Ok(result);
+            }
+            catch (NoAvailableItemException ex)
+            {
+                return NotFound(new ErrorModel(404, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpPut("CustomerCancelOrder")]
+        [ProducesResponseType(typeof(IEnumerable<CustomerOrderReturnDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<CustomerOrderReturnDTO>>> CustomerCancelOrder(int OrderID)
+        {
+            try
+            {
+                var result = await _orderServices.CustomerCancelOrder(OrderID);
+                return Ok(result);
+            }
+            catch (UnableToUpdateItemException ex)
+            {
+                return UnprocessableEntity(new ErrorModel(422, ex.Message));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new ErrorModel(404, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
     }
 }

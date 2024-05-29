@@ -34,7 +34,6 @@ namespace ShoppingAppTest.RepositoryTests
             var order = new Order
             {
                 CustomerID = 1,
-                SellerID = 2,
                 Order_Date = DateTime.Now,
                 Status = Enums.OrderStatus.Pending,
                 Address = "123 Main St",
@@ -60,7 +59,6 @@ namespace ShoppingAppTest.RepositoryTests
             var order = new Order
             {
                 CustomerID = 1,
-                SellerID = 2,
                 Order_Date = DateTime.Now,
                 Status = Enums.OrderStatus.Pending,
                 Address = "123 Main St",
@@ -86,16 +84,17 @@ namespace ShoppingAppTest.RepositoryTests
             // Arrange
             var context = GetInMemoryDbContext();
             var repository = new OrderRepository(context);
+            Customer customer = new Customer { Email = "test1@example.com", Name = "John Doe", Account_Status = "Active", Address = "TVL", Phone_Number = "54354453" };
             var order = new Order
             {
                 CustomerID = 1,
-                SellerID = 2,
                 Order_Date = DateTime.Now,
                 Status = Enums.OrderStatus.Pending,
                 Address = "123 Main St",
                 Total_Amount = 100,
                 Last_Updated = DateTime.Now,
-                Shipping_Method = "dummy"
+                Shipping_Method = "dummy",
+                Customer = customer
             };
             context.Orders.Add(order);
             await context.SaveChangesAsync();
@@ -118,7 +117,6 @@ namespace ShoppingAppTest.RepositoryTests
             var order = new Order
             {
                 CustomerID = 1,
-                SellerID = 2,
                 Order_Date = DateTime.Now,
                 Status = Enums.OrderStatus.Pending,
                 Address = "123 Main St",
@@ -158,8 +156,8 @@ namespace ShoppingAppTest.RepositoryTests
             var repository = new OrderRepository(context);
             Customer customer = new Customer { Email = "test1@example.com", Name = "John Doe", Account_Status = "Active", Address = "TVL", Phone_Number = "54354453" };
             context.Orders.AddRange(
-                new Order { CustomerID = 1, SellerID = 2, Order_Date = DateTime.Now, Status = Enums.OrderStatus.Pending, Address = "123 Main St", Total_Amount = 100, Last_Updated = DateTime.Now, Shipping_Method = "dummy", OrderDetails = new List<OrderDetail>(), Customer = customer },
-                new Order { CustomerID = 2, SellerID = 3, Order_Date = DateTime.Now, Status = Enums.OrderStatus.Delivered, Address = "456 Elm St", Total_Amount = 150, Last_Updated = DateTime.Now, Shipping_Method = "dummy", OrderDetails = new List<OrderDetail>(), Customer = customer });
+                new Order { CustomerID = 1,  Order_Date = DateTime.Now, Status = Enums.OrderStatus.Pending, Address = "123 Main St", Total_Amount = 100, Last_Updated = DateTime.Now, Shipping_Method = "dummy", OrderDetails = new List<OrderDetail>(), Customer = customer },
+                new Order { CustomerID = 2,  Order_Date = DateTime.Now, Status = Enums.OrderStatus.Delivered, Address = "456 Elm St", Total_Amount = 150, Last_Updated = DateTime.Now, Shipping_Method = "dummy", OrderDetails = new List<OrderDetail>(), Customer = customer });
             await context.SaveChangesAsync();
 
             // Act

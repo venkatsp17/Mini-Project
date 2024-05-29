@@ -11,6 +11,8 @@ namespace ShoppingAppAPI.Models
         [Required]
         public int OrderID { get; set; }
         [Required]
+        public int SellerID { get; set; }
+        [Required]
         public int ProductID { get; set; }
         [Required]
         public int Quantity { get; set; }
@@ -18,5 +20,6 @@ namespace ShoppingAppAPI.Models
         public decimal Unit_Price { get; set; }
         public Order Order { get; set; }
         public Product Product { get; set; }
+        public Seller Seller { get; set; }
     }
 }

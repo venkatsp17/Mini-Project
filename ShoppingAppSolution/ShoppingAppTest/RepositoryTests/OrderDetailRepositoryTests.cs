@@ -34,6 +34,7 @@ namespace ShoppingAppTest.RepositoryTests
             var orderDetail = new OrderDetail
             {
                 OrderID = 1,
+                SellerID =1,
                 ProductID = 1,
                 Quantity = 2,
                 Unit_Price = 50.0m
@@ -57,6 +58,7 @@ namespace ShoppingAppTest.RepositoryTests
             var orderDetail = new OrderDetail
             {
                 OrderID = 1,
+                SellerID = 1,
                 ProductID = 1,
                 Quantity = 2,
                 Unit_Price = 50.0m
@@ -83,6 +85,7 @@ namespace ShoppingAppTest.RepositoryTests
             {
                 OrderID = 1,
                 ProductID = 1,
+                SellerID = 1,
                 Quantity = 2,
                 Unit_Price = 50.0m
             };
@@ -107,6 +110,7 @@ namespace ShoppingAppTest.RepositoryTests
             {
                 OrderID = 1,
                 ProductID = 1,
+                SellerID = 1,
                 Quantity = 2,
                 Unit_Price = 50.0m
             };

@@ -38,15 +38,15 @@ namespace ShoppingAppAPI.Contexts
              .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Order>()
-               .HasOne(o => o.Seller)
-               .WithMany(s => s.Orders)
-               .HasForeignKey(o => o.SellerID)
-               .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Order>()
                 .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders)
                 .HasForeignKey(o => o.CustomerID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(od => od.Seller)
+                .WithMany(s => s.OrderDetails)
+                .HasForeignKey(od => od.SellerID)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Product>()
@@ -106,7 +106,7 @@ namespace ShoppingAppAPI.Contexts
                 .HasOne(ci => ci.Cart)
                 .WithMany(c => c.CartItems)
                 .HasForeignKey(ci => ci.CartID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             //modelBuilder.Entity<Payment>()
             //    .HasOne(p => p.Order)

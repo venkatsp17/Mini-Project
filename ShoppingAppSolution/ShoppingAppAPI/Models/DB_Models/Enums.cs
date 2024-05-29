@@ -13,9 +13,7 @@
         {
             Open,
             Closed,
-            Empty,
-            Saved,
-            Expired
+            Empty
         }
 
         public enum OrderStatus

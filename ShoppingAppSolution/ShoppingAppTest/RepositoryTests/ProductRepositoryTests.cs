@@ -90,6 +90,15 @@ namespace ShoppingAppTest.RepositoryTests
             // Arrange
             var context = GetInMemoryDbContext();
             var repository = new ProductRepository(context);
+            Seller seller = new Seller
+            {
+                Name = "ABC",
+                UserID = 1,
+                Email = "abc@gmail.com",
+                Address = "US",
+                Phone_Number = "43432532",
+                Account_Status = "Active",
+            };
             var product = new Product
             {
                 SellerID = 1,
@@ -101,7 +110,8 @@ namespace ShoppingAppTest.RepositoryTests
                 Image_URL = "http://example.com/image1.jpg",
                 Stock_Quantity = 10,
                 Creation_Date = DateTime.Now,
-                Last_Updated = DateTime.Now
+                Last_Updated = DateTime.Now,
+                Seller= seller,
             };
             context.Products.Add(product);
             await context.SaveChangesAsync();

@@ -6,13 +6,43 @@ using ShoppingAppAPI.Repositories.Interfaces;
 
 namespace ShoppingAppAPI.Repositories.Classes
 {
-    public class UserRepository : BaseRepository<int, User>, IUserRepository
+    public class UserRepository : IUserRepository
     {
-        public UserRepository(ShoppingAppContext context) : base(context)
+        private readonly ShoppingAppContext _context;
+        public UserRepository(ShoppingAppContext context)
         {
+            _context = context;
         }
 
-        public async override Task<User> Get(int key)
+        public async Task<User> Add(User item)
+        {
+            _context.Users.Add(item);
+            await _context.SaveChangesAsync();
+            return item;
+        }
+
+        public async Task<User> Delete(int key)
+        {
+            var item = await Get(key);
+            _context.Users.Remove(item);
+            await _context.SaveChangesAsync();
+            return item;
+        }
+
+        public async Task<IEnumerable<User>> Get()
+        {
+            return await _context.Users.ToListAsync() ?? throw new NoAvailableItemException("Categories");
+        }
+
+        public async Task<User> Update(User item)
+        {
+            _context.Users.Attach(item);
+            _context.Entry(item).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return item;
+        }
+
+        public async Task<User> Get(int key)
         {
             return await _context.Users.FirstOrDefaultAsync(c => c.UserID == key) ?? throw new NotFoundException("User");
         }

@@ -78,10 +78,10 @@ namespace ShoppingAppAPI
 
             #region repos
             builder.Services.AddScoped<IRepository<int, CartItem>, CartItemRepository>();
-            builder.Services.AddScoped<IRepository<int, Cart>, CartRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-            builder.Services.AddScoped<IRepository<int, OrderDetail>, OrderDetailRepository>();
+            builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
             builder.Services.AddScoped<IRepository<int, Order>, OrderRepository>();
             builder.Services.AddScoped<IRepository<int, Payment>, PaymentRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -100,6 +100,7 @@ namespace ShoppingAppAPI
             builder.Services.AddScoped<IProductServices, ProductServices>();
             builder.Services.AddScoped<IOrderServices, OrderServices>();
             builder.Services.AddScoped<ICategoryServices, CategoryServices>();
+            builder.Services.AddScoped<ICartServices, CartServices>();
             builder.Services.AddScoped<IUserServices, UserServices>();
             #endregion
 

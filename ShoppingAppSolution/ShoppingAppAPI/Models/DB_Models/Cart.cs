@@ -9,7 +9,6 @@ namespace ShoppingAppAPI.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CartID { get; set; }
-
         [Required]
         public int CustomerID { get; set; }
         public CartStatus Cart_Status { get; set; }
