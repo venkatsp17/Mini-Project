@@ -11,6 +11,7 @@ namespace ShoppingAppAPI.Services.Interfaces
         Task<SellerOrderReturnDTO> UpdateOrderStatus(OrderStatus orderStatus, int OrderID);
 
         Task<CustomerOrderReturnDTO> PlaceOrder(PlaceOrderDTO placeOrderDTO);
+        Task<CustomerOrderReturnDTO> UpdateOrderDeliveryDetails(UpdateOrderDeliveryDetailsDTO updateOrderDeliveryDetailsDTO);
 
         Task<IEnumerable<CustomerOrderReturnDTO>> ViewCustomerOrderHistory(int CustomerID);
 

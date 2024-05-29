@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingAppAPI.Exceptions;
 using ShoppingAppAPI.Models.DTO_s;
+using ShoppingAppAPI.Models.DTO_s.Customer_DTO_s;
+using ShoppingAppAPI.Models.DTO_s.Seller_DTO_s;
 using ShoppingAppAPI.Services.Interfaces;
 
 namespace ShoppingAppAPI.Controllers
@@ -11,9 +14,13 @@ namespace ShoppingAppAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserServices _userService;
-        public UserController(IUserServices userService)
+        private readonly ICustomerServices _customerService;
+        private readonly ISellerServices _sellerService;
+        public UserController(IUserServices userService, ICustomerServices customerService, ISellerServices sellerService)
         {
             _userService = userService;
+            _customerService = customerService;
+            _sellerService = sellerService;
         }
 
         [HttpPost("CustomerLogin")]
@@ -111,6 +118,47 @@ namespace ShoppingAppAPI.Controllers
                 return Conflict(new ErrorModel(409, ex.Message));
             }
             catch (UnableToRegisterException ex)
+            {
+                return UnprocessableEntity(new ErrorModel(422, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+        [Authorize(Roles = "Customer")]
+        [HttpPost("UpdateCustomerProfile")]
+        [ProducesResponseType(typeof(CustomerDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<CustomerDTO>> UpdateCustomerProfile(CustomerUpdateDTO updateDTO)
+        {
+            try
+            {
+                var result = await _customerService.UpdateCustomer(updateDTO);
+                return Ok(result);
+            }
+            catch (UnableToUpdateItemException ex)
+            {
+                return UnprocessableEntity(new ErrorModel(422, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+
+        [Authorize(Roles = "Seller")]
+        [HttpPost("UpdateSellerProfile")]
+        [ProducesResponseType(typeof(SellerDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<CustomerDTO>> UpdateSellerProfile(SellerUpdateDTO updateDTO)
+        {
+            try
+            {
+                var result = await _sellerService.UpdateSeller(updateDTO);
+                return Ok(result);
+            }
+            catch (UnableToUpdateItemException ex)
             {
                 return UnprocessableEntity(new ErrorModel(422, ex.Message));
             }

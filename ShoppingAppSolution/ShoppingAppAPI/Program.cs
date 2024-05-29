@@ -101,6 +101,7 @@ namespace ShoppingAppAPI
             builder.Services.AddScoped<IOrderServices, OrderServices>();
             builder.Services.AddScoped<ICategoryServices, CategoryServices>();
             builder.Services.AddScoped<ICartServices, CartServices>();
+            builder.Services.AddScoped<IReviewServices, ReviewServices>();
             builder.Services.AddScoped<IUserServices, UserServices>();
             #endregion
 

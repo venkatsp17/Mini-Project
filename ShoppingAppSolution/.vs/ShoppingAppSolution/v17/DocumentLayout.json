@@ -3,16 +3,88 @@
   "WorkspaceRootPath": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\controllers\\customerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\controllers\\customerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\classes\\orderservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\classes\\orderservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\repositories\\classes\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\repositories\\classes\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\contexts\\shoppingappcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\contexts\\shoppingappcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\models\\dto\u0027s\\order_dto\u0027s\\updateorderdeliverydetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\models\\dto\u0027s\\order_dto\u0027s\\updateorderdeliverydetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\interfaces\\iorderservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\interfaces\\iorderservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\models\\db_models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\models\\db_models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\classes\\customerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\classes\\customerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\classes\\sellerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\classes\\sellerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\interfaces\\isellerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\interfaces\\isellerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\controllers\\sellerproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\controllers\\sellerproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\models\\dto\u0027s\\sellerupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\models\\dto\u0027s\\sellerupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\models\\dto\u0027s\\customerupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\models\\dto\u0027s\\customerupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\interfaces\\icustomerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\interfaces\\icustomerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\controllers\\customercartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\controllers\\customercartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\controllers\\customerreviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\controllers\\customerreviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\classes\\reviewservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\classes\\reviewservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\models\\db_models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\models\\db_models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\interfaces\\ireviewservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\interfaces\\ireviewservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\models\\dto\u0027s\\review_dto\u0027s\\reviewgetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\models\\dto\u0027s\\review_dto\u0027s\\reviewgetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\repositories\\classes\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\repositories\\classes\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\classes\\cartservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,16 +103,8 @@
       "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\models\\dto\u0027s\\order_dto\u0027s\\placeorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\repositories\\interfaces\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\repositories\\interfaces\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\controllers\\customercartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\controllers\\customercartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -49,9 +113,22 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 286,
-          "SelectedChildIndex": 10,
+          "DockedWidth": 169,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IOrderServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\IOrderServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Interfaces\\IOrderServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\IOrderServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Interfaces\\IOrderServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAB7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T19:22:45.506Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{320fd13f-632f-4b16-9527-a1adfe555f6c}"
@@ -70,33 +147,215 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "20240529171628_AddCascadingToCart.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
-              "RelativeDocumentMoniker": "ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
-              "RelativeToolTip": "ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAArAAAA",
+              "DocumentIndex": 0,
+              "Title": "CustomerOrderController.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerOrderController.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Controllers\\CustomerOrderController.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerOrderController.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Controllers\\CustomerOrderController.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAQwGUAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T17:16:28.812Z",
+              "WhenOpened": "2024-05-29T18:14:36.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ShoppingAppContext.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Contexts\\ShoppingAppContext.cs",
-              "RelativeDocumentMoniker": "ShoppingAppAPI\\Contexts\\ShoppingAppContext.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Contexts\\ShoppingAppContext.cs",
-              "RelativeToolTip": "ShoppingAppAPI\\Contexts\\ShoppingAppContext.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAewCEAAAAMAAAA",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAowJQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T17:12:50.176Z",
+              "WhenOpened": "2024-05-29T18:49:22.793Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DB_Models\\Order.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Models\\DB_Models\\Order.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DB_Models\\Order.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Models\\DB_Models\\Order.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T19:25:08.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ISellerServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\ISellerServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Interfaces\\ISellerServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\ISellerServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Interfaces\\ISellerServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T19:17:11.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SellerProductController.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\SellerProductController.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Controllers\\SellerProductController.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\SellerProductController.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Controllers\\SellerProductController.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAYwEUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T18:59:08.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SellerUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\SellerUpdateDTO.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Models\\DTO\u0027s\\SellerUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\SellerUpdateDTO.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Models\\DTO\u0027s\\SellerUpdateDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T19:04:20.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SellerServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\SellerServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\SellerServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\SellerServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\SellerServices.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAQwCgAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T19:02:48.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ICustomerServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\ICustomerServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Interfaces\\ICustomerServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\ICustomerServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Interfaces\\ICustomerServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T18:44:34.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CustomerServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\CustomerServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\CustomerServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\CustomerServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\CustomerServices.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAYwCoAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T18:40:39.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CustomerUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\CustomerUpdateDTO.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Models\\DTO\u0027s\\CustomerUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\CustomerUpdateDTO.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Models\\DTO\u0027s\\CustomerUpdateDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T18:38:53.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CustomerReviewController.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerReviewController.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Controllers\\CustomerReviewController.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerReviewController.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Controllers\\CustomerReviewController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwCAAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T18:14:12.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ReviewServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\ReviewServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\ReviewServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\ReviewServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\ReviewServices.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBoAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T17:47:42.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CustomerCartController.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAIAzwCUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T11:04:10.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DB_Models\\Review.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Models\\DB_Models\\Review.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DB_Models\\Review.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Models\\DB_Models\\Review.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T17:43:41.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ReviewGetDTO.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\Review_DTO\u0027s\\ReviewGetDTO.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Models\\DTO\u0027s\\Review_DTO\u0027s\\ReviewGetDTO.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\Review_DTO\u0027s\\ReviewGetDTO.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Models\\DTO\u0027s\\Review_DTO\u0027s\\ReviewGetDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T17:45:55.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IReviewServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\IReviewServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Interfaces\\IReviewServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\IReviewServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Interfaces\\IReviewServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T17:42:59.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "CartServices.cs",
               "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\CartServices.cs",
               "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\CartServices.cs",
@@ -104,12 +363,11 @@
               "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\CartServices.cs",
               "ViewState": "AQIAAMMAAAAAAAAAAAAowNAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T16:41:44.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T16:41:44.071Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 23,
               "Title": "ICartServices.cs",
               "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Interfaces\\ICartServices.cs",
               "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Interfaces\\ICartServices.cs",
@@ -117,12 +375,23 @@
               "RelativeToolTip": "ShoppingAppAPI\\Services\\Interfaces\\ICartServices.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwA0AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T16:29:34.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T16:29:34.924Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 22,
+              "Title": "20240529171628_AddCascadingToCart.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Migrations\\20240529171628_AddCascadingToCart.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T17:16:28.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
               "Title": "ICartRepository.cs",
               "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Repositories\\Interfaces\\ICartRepository.cs",
               "RelativeDocumentMoniker": "ShoppingAppAPI\\Repositories\\Interfaces\\ICartRepository.cs",
@@ -130,12 +399,24 @@
               "RelativeToolTip": "ShoppingAppAPI\\Repositories\\Interfaces\\ICartRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T15:44:10.603Z",
+              "WhenOpened": "2024-05-29T15:44:10.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Program.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Program.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Program.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAQwGoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T11:39:21.308Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 24,
               "Title": "PlaceOrderDTO.cs",
               "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\Order_DTO\u0027s\\PlaceOrderDTO.cs",
               "RelativeDocumentMoniker": "ShoppingAppAPI\\Models\\DTO\u0027s\\Order_DTO\u0027s\\PlaceOrderDTO.cs",
@@ -143,25 +424,11 @@
               "RelativeToolTip": "ShoppingAppAPI\\Models\\DTO\u0027s\\Order_DTO\u0027s\\PlaceOrderDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T15:38:38.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T15:38:38.448Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OrderServices.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
-              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
-              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAhwEkAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T07:26:12.269Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 20,
               "Title": "CartRepository.cs",
               "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Repositories\\Classes\\CartRepository.cs",
               "RelativeDocumentMoniker": "ShoppingAppAPI\\Repositories\\Classes\\CartRepository.cs",
@@ -169,33 +436,38 @@
               "RelativeToolTip": "ShoppingAppAPI\\Repositories\\Classes\\CartRepository.cs",
               "ViewState": "AQIAACQAAAAAAAAAAAAEwDUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T15:44:52.666Z",
+              "WhenOpened": "2024-05-29T15:44:52.666Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 169,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\OrderServices.cs",
+              "ViewState": "AQIAALkAAAAAAAAAAAAswMYAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T07:26:12.269Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CustomerCartController.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
-              "RelativeDocumentMoniker": "ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
-              "RelativeToolTip": "ShoppingAppAPI\\Controllers\\CustomerCartController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAASwCAAAAAiAAAA",
+              "DocumentIndex": 3,
+              "Title": "UpdateOrderDeliveryDetailsDTO.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\Order_DTO\u0027s\\UpdateOrderDeliveryDetailsDTO.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Models\\DTO\u0027s\\Order_DTO\u0027s\\UpdateOrderDeliveryDetailsDTO.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Models\\DTO\u0027s\\Order_DTO\u0027s\\UpdateOrderDeliveryDetailsDTO.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Models\\DTO\u0027s\\Order_DTO\u0027s\\UpdateOrderDeliveryDetailsDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T11:04:10.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Program.cs",
-              "RelativeDocumentMoniker": "ShoppingAppAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Program.cs",
-              "RelativeToolTip": "ShoppingAppAPI\\Program.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAhwGQAAABEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T11:39:21.308Z",
+              "WhenOpened": "2024-05-29T19:24:06.453Z",
               "EditorCaption": ""
             }
           ]

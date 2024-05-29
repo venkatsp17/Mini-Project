@@ -18,6 +18,7 @@ namespace ShoppingAppAPI.Controllers
         {
             _orderServices = orderServices;
         }
+
         [Authorize]
         [HttpPost("PlaceOrder")]
         [ProducesResponseType(typeof(CustomerOrderReturnDTO), StatusCodes.Status200OK)]
@@ -85,6 +86,27 @@ namespace ShoppingAppAPI.Controllers
             catch (NotFoundException ex)
             {
                 return NotFound(new ErrorModel(404, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet("UpdateOrderDeliveryDetails")]
+        [ProducesResponseType(typeof(CustomerOrderReturnDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<CustomerOrderReturnDTO>> UpdateOrderDeliveryDetails(UpdateOrderDeliveryDetailsDTO deliveryDetailsDTO)
+        {
+            try
+            {
+                var result = await _orderServices.UpdateOrderDeliveryDetails(deliveryDetailsDTO);
+                return Ok(result);
+            }
+            catch (UnableToUpdateItemException ex)
+            {
+                return UnprocessableEntity(new ErrorModel(422, ex.Message));
             }
             catch (Exception ex)
             {

@@ -2339,3 +2339,20 @@ FROM (
 ) AS [t]
 LEFT JOIN [CartItems] AS [c0] ON [t].[CartID] = [c0].[CartID]
 ORDER BY [t].[CartID]
+INFO  11:07:02 Now listening on: http://localhost:5083
+INFO  11:07:02 Application started. Press Ctrl+C to shut down.
+INFO  11:07:02 Hosting environment: Development
+INFO  11:07:02 Content root path: C:\Users\vc\Desktop\Mini Project\ShoppingAppSolution\ShoppingAppAPI\
+WARN  11:07:19 No store type was specified for the decimal property 'Shipping_Cost' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+WARN  11:07:19 No store type was specified for the decimal property 'Total_Amount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+WARN  11:07:19 No store type was specified for the decimal property 'Unit_Price' on entity type 'OrderDetail'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+WARN  11:07:19 No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+WARN  11:07:19 No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+WARN  11:07:19 No store type was specified for the decimal property 'Amount' on entity type 'Refund'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+INFO  11:07:19 Entity Framework Core 6.0.30 initialized 'ShoppingAppContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.30' with options: None
+INFO  11:07:22 Executed DbCommand (147ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [o].[OrderID], [o].[Address], [o].[CustomerID], [o].[Last_Updated], [o].[Order_Date], [o].[Shipping_Cost], [o].[Shipping_Method], [o].[Status], [o].[Success_PaymentID], [o].[Total_Amount], [c].[CustomerID], [o0].[OrderDetailID], [o0].[OrderID], [o0].[ProductID], [o0].[Quantity], [o0].[SellerID], [o0].[Unit_Price], [c].[Account_Status], [c].[Address], [c].[Date_of_Birth], [c].[Email], [c].[Gender], [c].[Last_Login], [c].[Name], [c].[Phone_Number], [c].[Profile_Picture_URL], [c].[UserID]
+FROM [Orders] AS [o]
+INNER JOIN [Customers] AS [c] ON [o].[CustomerID] = [c].[CustomerID]
+LEFT JOIN [OrderDetails] AS [o0] ON [o].[OrderID] = [o0].[OrderID]
+ORDER BY [o].[OrderID], [c].[CustomerID]

@@ -195,5 +195,30 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToUpdateItemException(ex.Message);
             }
         }
+
+        public async Task<CustomerOrderReturnDTO> UpdateOrderDeliveryDetails(UpdateOrderDeliveryDetailsDTO updateOrderDeliveryDetailsDTO)
+        {
+            try
+            {
+                Order order = await _orderRepository.Get(updateOrderDeliveryDetailsDTO.OrderID);
+                if (order == null)
+                {
+                    throw new NotFoundException("Order");
+                }
+                order.Address = updateOrderDeliveryDetailsDTO.Address;
+                order.Shipping_Method = updateOrderDeliveryDetailsDTO.Shipping_Method;
+                order.Last_Updated = DateTime.Now;
+                Order updatedOrder = await _orderRepository.Update(order);
+                if (updatedOrder == null)
+                {
+                    throw new UnableToUpdateItemException("Unable to update order status at this moment!");
+                }
+                return OrderMapper.MapToCustomerOrderReturnDTO(updatedOrder);
+            }
+            catch (Exception ex)
+            {
+                throw new UnableToUpdateItemException(ex.Message);
+            }
+        }
     }
 }
