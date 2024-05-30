@@ -127,7 +127,7 @@ namespace ShoppingAppAPI.Controllers
             }
         }
         [Authorize(Roles = "Customer")]
-        [HttpPost("UpdateCustomerProfile")]
+        [HttpPut("UpdateCustomerProfile")]
         [ProducesResponseType(typeof(CustomerDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<CustomerDTO>> UpdateCustomerProfile(CustomerUpdateDTO updateDTO)
@@ -148,7 +148,7 @@ namespace ShoppingAppAPI.Controllers
         }
 
         [Authorize(Roles = "Seller")]
-        [HttpPost("UpdateSellerProfile")]
+        [HttpPut("UpdateSellerProfile")]
         [ProducesResponseType(typeof(SellerDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<CustomerDTO>> UpdateSellerProfile(SellerUpdateDTO updateDTO)

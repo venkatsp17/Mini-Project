@@ -5,6 +5,6 @@ namespace ShoppingAppAPI.Services.Interfaces
 {
     public interface IReviewServices
     {
-        Task<Review> AddReview(ReviewGetDTO reviewDto);
+        Task<ReviewReturnDTO> AddReview(ReviewGetDTO reviewDto);
     }
 }

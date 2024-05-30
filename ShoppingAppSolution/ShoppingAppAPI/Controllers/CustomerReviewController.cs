@@ -14,11 +14,16 @@ namespace ShoppingAppAPI.Controllers
     {
         private readonly IReviewServices _reviewServices;
 
+        public CustomerReviewController(IReviewServices reviewServices)
+        {
+            _reviewServices = reviewServices;
+        }
+
         [Authorize]
         [HttpPost("AddReview")]
-        [ProducesResponseType(typeof(ReviewGetDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ReviewReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<ReviewGetDTO>> AddReview(ReviewGetDTO reviewGetDTO)
+        public async Task<ActionResult<ReviewReturnDTO>> AddReview(ReviewGetDTO reviewGetDTO)
         {
 
             try

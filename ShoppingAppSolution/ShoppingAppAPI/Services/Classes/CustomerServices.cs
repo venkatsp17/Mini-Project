@@ -30,6 +30,7 @@ namespace ShoppingAppAPI.Services.Classes
                 customer.Phone_Number = updateDTO.Phone_Number;
                 customer.Address = updateDTO.Address;
                 customer.Email = updateDTO.Email;
+                customer.Name = updateDTO.Name;
                 customer.Profile_Picture_URL = updateDTO.Profile_Picture_URL;
                 Customer updatedCustomer = await _customerRepository.Update(customer);
                 if (updatedCustomer == null)

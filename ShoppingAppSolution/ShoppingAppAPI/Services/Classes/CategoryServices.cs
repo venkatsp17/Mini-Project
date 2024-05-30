@@ -26,7 +26,7 @@ namespace ShoppingAppAPI.Services.Classes
                 return category.Products.Select(x => ProductMapper.MapToCustomerProductDTO(x));
             }
             catch(Exception exception) {
-                throw new Exception("Unable to get category at this moment!");
+                throw new Exception("Unable to get category at this moment: "+exception.Message);
             }
            
            

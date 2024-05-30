@@ -15,23 +15,39 @@ namespace ShoppingAppAPI.Services.Classes
             _reviewRepository = reviewRepository;
         }
 
-        public async Task<Review> AddReview(ReviewGetDTO reviewDto)
+        public async Task<ReviewReturnDTO> AddReview(ReviewGetDTO reviewDto)
         {
-            var review = new Review
+            try
             {
-                ProductID = reviewDto.ProductID,
-                CustomerID = reviewDto.CustomerID,
-                Rating = reviewDto.Rating,
-                Comment = reviewDto.Comment,  
-                Review_Date = DateTime.Now,
-            };
+                var review = new Review
+                {
+                    ProductID = reviewDto.ProductID,
+                    CustomerID = reviewDto.CustomerID,
+                    Rating = reviewDto.Rating,
+                    Comment = reviewDto.Comment,
+                    Review_Date = DateTime.Now,
+                };
 
-            var newReview = await _reviewRepository.Add(review);
-            if(newReview == null) {
-                throw new UnableToAddItemException("Unable to add review at this moment!");
+                var newReview = await _reviewRepository.Add(review);
+                if (newReview == null)
+                {
+                    throw new UnableToAddItemException("Unable to add review at this moment!");
+                }
+
+                return new ReviewReturnDTO()
+                {
+                    ReviewID = newReview.ReviewID,
+                    ProductID = newReview.ProductID,
+                    CustomerID = newReview.CustomerID,
+                    Rating = newReview.Rating,
+                    Comment = newReview.Comment,
+                    Review_Date = newReview.Review_Date,
+                };
             }
-
-            return review;
+            catch (Exception ex)
+            {
+                throw new UnableToAddItemException(ex.Message);
+            }
         }
     }
 }

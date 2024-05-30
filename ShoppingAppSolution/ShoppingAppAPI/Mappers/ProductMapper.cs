@@ -2,6 +2,7 @@
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Models.DTO_s.Product_DTO_s;
 using ShoppingAppAPI.Models.DTO_s;
+using ShoppingAppAPI.Models.DTO_s.Review_DTO_s;
 
 namespace ShoppingAppAPI.Mappers
 {
@@ -36,7 +37,15 @@ namespace ShoppingAppAPI.Mappers
                 Brand = product.Brand,
                 Image_URL = product.Image_URL,
                 Seller = SellerMapper.MapToSellerDTO(product.Seller),
-                Reviews = product.Reviews,
+                Reviews = product.Reviews.Select(r => new ReviewReturnDTO
+                {
+                    ReviewID = r.ReviewID,
+                    ProductID = r.ProductID,
+                    Comment = r.Comment,
+                    CustomerID = r.CustomerID,
+                    Rating = r.Rating,
+                    Review_Date = r.Review_Date,
+                }).ToList(),
             };
         }
     }

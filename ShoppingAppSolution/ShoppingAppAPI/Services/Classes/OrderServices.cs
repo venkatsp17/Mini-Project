@@ -11,6 +11,7 @@ namespace ShoppingAppAPI.Services.Classes
     public class OrderServices : IOrderServices
     {
         private readonly IRepository<int, Order> _orderRepository;
+        private readonly IRepository<int, Refund> _refundRepository;
         private readonly IOrderDetailRepository _orderDetailRepository;
         private readonly ICartRepository _cartRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -19,13 +20,16 @@ namespace ShoppingAppAPI.Services.Classes
             IUnitOfWork unitOfWork, 
             IOrderDetailRepository orderDetailRepository,
             ICartRepository cartRepository,
-            ICartServices cartServices)
+            ICartServices cartServices,
+            IRepository<int, Refund> refundRepository
+            )
         { 
             _orderRepository = orderRepository;
             _unitOfWork = unitOfWork;
             _orderDetailRepository = orderDetailRepository;
             _cartRepository = cartRepository;
             _cartServices = cartServices;
+            _refundRepository = refundRepository;
         }
 
         public async Task<CustomerOrderReturnDTO> PlaceOrder(PlaceOrderDTO placeOrderDTO)
@@ -169,30 +173,55 @@ namespace ShoppingAppAPI.Services.Classes
 
         public async Task<CustomerOrderReturnDTO> CustomerCancelOrder(int OrderID)
         {
-            try
+            using (var transaction = _unitOfWork.BeginTransaction())
             {
-                Order order = await _orderRepository.Get(OrderID);
-                if (order == null)
+                try
                 {
-                    throw new NotFoundException("Order");
+                    Order order = await _orderRepository.Get(OrderID);
+                    if (order == null)
+                    {
+                        throw new NotFoundException("Order");
+                    }
+                    if (order.Status == OrderStatus.Shipped || order.Status == OrderStatus.Delivered || order.Status == OrderStatus.Refunded || order.Status == OrderStatus.Failed || order.Status == OrderStatus.Canceled)
+                    {
+                        OrderStatus orderStatus = order.Status;
+                        throw new NotAllowedToCancelOrderException(orderStatus.ToString());
+                    }
+                    order.Status = OrderStatus.Canceled;
+                    order.Last_Updated = DateTime.Now;
+                    Order updatedOrder = await _orderRepository.Update(order);
+                    if (updatedOrder == null)
+                    {
+                        throw new UnableToUpdateItemException("Unable to update order status at this moment!");
+                    }
+                    if (order.Success_PaymentID == null)
+                    {
+
+                    }
+                    else
+                    {
+                        Refund refund = new Refund()
+                        {
+                            OrderID = order.OrderID,
+                            Amount = order.Total_Amount,
+                            Reason = "Order Cancelled!",
+                            Refund_Method = "Online",
+                            Status = RefundStatus.Pending,
+                        };
+                        var initiateRefund = await _refundRepository.Add(refund);
+                        if (initiateRefund == null)
+                        {
+                            throw new UnableToUpdateItemException("Unable to update order status at this moment!");
+                        }
+                    }
+                    await _unitOfWork.Commit();
+                    return OrderMapper.MapToCustomerOrderReturnDTO(updatedOrder);
                 }
-                if(order.Status == OrderStatus.Shipped || order.Status == OrderStatus.Delivered || order.Status == OrderStatus.Refunded || order.Status == OrderStatus.Failed)
+                catch (Exception ex)
                 {
-                    OrderStatus orderStatus = order.Status;
-                    throw new NotAllowedToCancelOrderException(orderStatus.ToString());
+                    await _unitOfWork.Rollback();
+                    throw new UnableToUpdateItemException(ex.Message);
                 }
-                order.Status = OrderStatus.Canceled;
-                order.Last_Updated = DateTime.Now;
-                Order updatedOrder = await _orderRepository.Update(order);
-                if (updatedOrder == null)
-                {
-                    throw new UnableToUpdateItemException("Unable to update order status at this moment!");
-                }
-                return OrderMapper.MapToCustomerOrderReturnDTO(updatedOrder);
-            }
-            catch (Exception ex)
-            {
-                throw new UnableToUpdateItemException(ex.Message);
             }
         }
 

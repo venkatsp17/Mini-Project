@@ -51,7 +51,7 @@ namespace ShoppingAppAPI.Repositories.Classes
             }
             catch (Exception ex)
             {
-                throw new Exception("Unable to Fetch Product Details!");
+                throw new Exception(ex.Message);
             }
         }
 

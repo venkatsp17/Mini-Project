@@ -91,6 +91,7 @@ namespace ShoppingAppAPI.Services.Classes
                 cart.Last_Updated = DateTime.Now;
                 await _cartRepository.Update(cart);
     
+
                 return CartMapper.MapCartToDTO(cart);
             }
             catch(Exception ex)
@@ -199,7 +200,7 @@ namespace ShoppingAppAPI.Services.Classes
             try
             {
                 var cart = await _cartRepository.Get(cartID);
-                if (cart == null) throw new NotFoundException("Cart not found.");
+                if (cart == null) throw new NotFoundException("Cart");
 
                 var deletedCart = await _cartRepository.Delete(cartID);
                 if (deletedCart == null)

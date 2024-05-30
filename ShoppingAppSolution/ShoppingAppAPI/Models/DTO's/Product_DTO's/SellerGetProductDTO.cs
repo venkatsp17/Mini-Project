@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ShoppingAppAPI.Models.DTO_s.Review_DTO_s;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoppingAppAPI.Models.DTO_s.Product_DTO_s
 {
@@ -13,8 +14,7 @@ namespace ShoppingAppAPI.Models.DTO_s.Product_DTO_s
         public string Image_URL { get; set; }
         public int Stock_Quantity { get; set; }
         public DateTime Creation_Date { get; set; }
-        [Required]
         public DateTime Last_Updated { get; set; }
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<ReviewReturnDTO> Reviews { get; set; }
     }
 }

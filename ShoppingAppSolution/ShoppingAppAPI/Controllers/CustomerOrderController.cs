@@ -94,7 +94,7 @@ namespace ShoppingAppAPI.Controllers
         }
 
         [Authorize(Roles = "Customer")]
-        [HttpGet("UpdateOrderDeliveryDetails")]
+        [HttpPut("UpdateOrderDeliveryDetails")]
         [ProducesResponseType(typeof(CustomerOrderReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<CustomerOrderReturnDTO>> UpdateOrderDeliveryDetails(UpdateOrderDeliveryDetailsDTO deliveryDetailsDTO)
