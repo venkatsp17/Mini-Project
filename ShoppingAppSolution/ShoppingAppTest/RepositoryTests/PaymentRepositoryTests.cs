@@ -126,6 +126,41 @@ namespace ShoppingAppTest.RepositoryTests
         }
 
         [Test]
+        public async Task GetAll_Payments_ShouldReturnPayment()
+        {
+            // Arrange
+            var context = GetInMemoryDbContext();
+            var repository = new PaymentRepository(context);
+            var payment = new Payment
+            {
+                OrderID = 1,
+                Payment_Method = "Credit Card",
+                Amount = 100.0m,
+                Transaction_Date = DateTime.Now,
+                Payment_Status = Enums.PaymentStatus.Authorized
+            };
+            var payment1 = new Payment
+            {
+                OrderID = 2,
+                Payment_Method = "Credit Card",
+                Amount = 100.0m,
+                Transaction_Date = DateTime.Now,
+                Payment_Status = Enums.PaymentStatus.Authorized
+            };
+
+            context.Payments.Add(payment);
+            context.Payments.Add(payment1);
+            await context.SaveChangesAsync();
+
+            // Act
+            var result = await repository.Get();
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
+
+        [Test]
         public async Task Get_Payment_ShouldThrowNotFoundException()
         {
             // Arrange

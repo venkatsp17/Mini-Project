@@ -127,6 +127,40 @@ namespace ShoppingAppTest.RepositoryTests
         }
 
         [Test]
+        public async Task GetAll_Review_ShouldReturnReview()
+        {
+            // Arrange
+            var context = GetInMemoryDbContext();
+            var repository = new ReviewRepository(context);
+            var review = new Review
+            {
+                ProductID = 1,
+                CustomerID = 1,
+                Rating = 5,
+                Comment = "Excellent product!",
+                Review_Date = DateTime.Now
+            };
+            var review1 = new Review
+            {
+                ProductID = 2,
+                CustomerID = 2,
+                Rating = 5,
+                Comment = "Excellent product!",
+                Review_Date = DateTime.Now
+            };
+            context.Reviews.Add(review);
+            context.Reviews.Add(review1);
+            await context.SaveChangesAsync();
+
+            // Act
+            var result = await repository.Get();
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
+
+        [Test]
         public async Task Get_Review_ShouldThrowNotFoundException()
         {
             // Arrange

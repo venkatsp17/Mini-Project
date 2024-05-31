@@ -3,6 +3,7 @@ using ShoppingAppAPI.Contexts;
 using ShoppingAppAPI.Exceptions;
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Repositories.Classes;
+using ShoppingAppAPI.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,72 @@ namespace ShoppingAppTest.RepositoryTests
             var context = new ShoppingAppContext(options);
             context.Database.EnsureCreated();
             return context;
+        }
+
+        [Test]
+        public async Task Add_User_Success()
+        {
+            var context = GetInMemoryDbContext();   
+            var _userRepository = new UserRepository(context);
+            var newUser = new User { UserID = 3, Username = "User3", Password = Encoding.UTF8.GetBytes("password"), Password_Hashkey = Encoding.UTF8.GetBytes("passwordHash") };
+
+            var result = await _userRepository.Add(newUser);
+
+            Assert.NotNull(result);
+            Assert.AreEqual(newUser.Username, result.Username);
+        }
+        [Test]
+        public async Task Delete_User_Success()
+        {
+            var _context = GetInMemoryDbContext();
+            var _userRepository = new UserRepository(_context);
+            var newUser = new User { UserID = 3, Username = "User3", Password = Encoding.UTF8.GetBytes("password"), Password_Hashkey = Encoding.UTF8.GetBytes("passwordHash") };
+
+            await _userRepository.Add(newUser);
+            var userToDelete = _context.Users.First();
+
+            var result = await _userRepository.Delete(userToDelete.UserID);
+
+            Assert.NotNull(result);
+            Assert.AreEqual(userToDelete.UserID, result.UserID);
+
+            var userInDb = await _context.Users.FindAsync(userToDelete.UserID);
+            Assert.Null(userInDb);
+        }
+
+        [Test]
+        public async Task Update_User_Success()
+        {
+            var _context = GetInMemoryDbContext();
+            var _userRepository = new UserRepository(_context);
+            var newUser = new User { UserID = 3, Username = "User3", Password = Encoding.UTF8.GetBytes("password"), Password_Hashkey = Encoding.UTF8.GetBytes("passwordHash") };
+
+            await _userRepository.Add(newUser);
+            var userToUpdate = _context.Users.First();
+            userToUpdate.Username = "UpdatedUser";
+
+            var result = await _userRepository.Update(userToUpdate);
+
+            Assert.NotNull(result);
+            Assert.AreEqual("UpdatedUser", result.Username);
+
+            var userInDb = await _context.Users.FindAsync(userToUpdate.UserID);
+            Assert.NotNull(userInDb);
+            Assert.AreEqual("UpdatedUser", userInDb.Username);
+        }
+
+        [Test]
+        public async Task Get_AllUsers_Success()
+        {
+            var _context = GetInMemoryDbContext();
+            var _userRepository = new UserRepository(_context);
+            var newUser = new User { UserID = 3, Username = "User3", Password = Encoding.UTF8.GetBytes("password"), Password_Hashkey = Encoding.UTF8.GetBytes("passwordHash") };
+
+            await _userRepository.Add(newUser);
+            var result = await _userRepository.Get();
+
+            Assert.NotNull(result);
+            Assert.AreEqual(1, result.Count());
         }
 
         [Test]

@@ -110,5 +110,24 @@ namespace ShoppingAppTest.RepositoryTests
             Assert.NotNull(result);
             Assert.That(result.Count(), Is.EqualTo(2));
         }
+
+        [Test]
+        public async Task GetCartsByName_ShouldReturnAllCarts()
+        {
+            // Arrange
+            var context = GetInMemoryDbContext();
+            var repository = new CartRepository(context);
+            context.Carts.AddRange(
+                new Cart { CustomerID = 1, Cart_Status = Enums.CartStatus.Open, Last_Updated = DateTime.Now },
+                new Cart { CustomerID = 2, Cart_Status = Enums.CartStatus.Closed, Last_Updated = DateTime.Now });
+            await context.SaveChangesAsync();
+
+            // Act
+            var result = await repository.GetCartByCustomerID(1);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.That(result.CartID, Is.EqualTo(1));
+        }
     }
 }

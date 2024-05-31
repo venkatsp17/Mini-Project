@@ -126,6 +126,40 @@ namespace ShoppingAppTest.RepositoryTests
         }
 
         [Test]
+        public async Task GetAll_OrderDetails_ShouldReturnOrderDetail()
+        {
+            // Arrange
+            var context = GetInMemoryDbContext();
+            var repository = new OrderDetailRepository(context);
+            var orderDetail = new OrderDetail
+            {
+                OrderID = 1,
+                ProductID = 1,
+                SellerID = 1,
+                Quantity = 2,
+                Unit_Price = 50.0m
+            };
+            var orderDetail1 = new OrderDetail
+            {
+                OrderID = 1,
+                ProductID = 2,
+                SellerID = 1,
+                Quantity = 2,
+                Unit_Price = 70.0m
+            };
+            context.OrderDetails.Add(orderDetail);
+            context.OrderDetails.Add(orderDetail1);
+            await context.SaveChangesAsync();
+
+            // Act
+            var result = await repository.Get();
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
+
+        [Test]
         public async Task Get_OrderDetail_ShouldThrowNotFoundException()
         {
             // Arrange

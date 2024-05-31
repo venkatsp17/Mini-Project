@@ -129,6 +129,42 @@ namespace ShoppingAppTest.RepositoryTests
         }
 
         [Test]
+        public async Task GetAll_Seller_ShouldReturnSeller()
+        {
+            // Arrange
+            var context = GetInMemoryDbContext();
+            var repository = new SellerRepository(context);
+            var seller = new Seller
+            {
+                UserID = 1,
+                Email = "seller@example.com",
+                Name = "John Doe",
+                Address = "123 Main St",
+                Phone_Number = "123-456-7890",
+                Account_Status = "Active"
+            };
+            var seller1 = new Seller
+            {
+                UserID = 2,
+                Email = "seller@example.com",
+                Name = "John Doe",
+                Address = "123 Main St",
+                Phone_Number = "123-456-7890",
+                Account_Status = "Active"
+            };
+            context.Sellers.Add(seller);
+            context.Sellers.Add(seller1);
+            await context.SaveChangesAsync();
+
+            // Act
+            var result = await repository.Get();
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
+
+        [Test]
         public async Task Get_Seller_ShouldThrowNotFoundException()
         {
             // Arrange

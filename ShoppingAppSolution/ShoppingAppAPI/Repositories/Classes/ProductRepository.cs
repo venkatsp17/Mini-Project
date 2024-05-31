@@ -45,14 +45,7 @@ namespace ShoppingAppAPI.Repositories.Classes
 
         public async Task<IEnumerable<Product>> Get()
         {
-            try
-            {
-                return await _context.Products.Include(p => p.Seller).Include(p => p.Reviews).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return await _context.Products.Include(p => p.Seller).Include(p => p.Reviews).ToListAsync();
         }
 
         public async Task<Product> GetProductByName(string productName)

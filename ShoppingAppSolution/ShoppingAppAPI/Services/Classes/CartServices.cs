@@ -6,6 +6,7 @@ using static ShoppingAppAPI.Models.Enums;
 using ShoppingAppAPI.Mappers;
 using ShoppingAppAPI.Services.Interfaces;
 using ShoppingAppAPI.Repositories.Interfaces;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ShoppingAppAPI.Services.Classes
 {

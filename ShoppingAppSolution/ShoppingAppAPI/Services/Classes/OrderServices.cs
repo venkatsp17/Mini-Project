@@ -39,7 +39,7 @@ namespace ShoppingAppAPI.Services.Classes
                 try
                 {
                     var cart = await _cartRepository.GetCartByCustomerID(placeOrderDTO.CustomerID);
-                    if(cart == null || cart.Cart_Status == CartStatus.Closed || cart.Cart_Status == CartStatus.Empty)
+                    if(cart == null || cart.Cart_Status == CartStatus.Closed)
                     {
                         throw new NoAvailableItemException("Cart");
                     }
@@ -167,7 +167,7 @@ namespace ShoppingAppAPI.Services.Classes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new NoAvailableItemException(ex.Message);
             }
         }
 

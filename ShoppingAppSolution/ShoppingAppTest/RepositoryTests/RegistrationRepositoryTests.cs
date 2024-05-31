@@ -9,21 +9,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShoppingAppAPI.Repositories.Interfaces;
+using System.Security.Cryptography;
+using Microsoft.Data.Sqlite;
 
 namespace ShoppingAppTest.RepositoryTests
 {
     [TestFixture]
     public class RegistrationRepositoryTests
     {
+        IRegistrationRepository _registrationRepository;
         private ShoppingAppContext GetInMemoryDbContext()
         {
-            var options = new DbContextOptionsBuilder<ShoppingAppContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
-                .Options;
-
+            var connection = new SqliteConnection("DataSource=:memory:");
+            connection.Open();
+            var options = new DbContextOptionsBuilder<ShoppingAppContext>().UseSqlite(connection).Options;
             var context = new ShoppingAppContext(options);
             context.Database.EnsureCreated();
             return context;
+            //using (var context = new ShoppingAppContext(options))
+            //{
+            //    context.Employees.Add(new Employee { Id = 1, FirstName = "John", LastName = "Doe", Address = "123 Street", HomePhone = "111-111-1111", CellPhone = "222-222-2222" });
+            //    context.SaveChanges();
+            //}
+        }
+        private UserRegisterDTO MapUserRegisterDTO(RegisterDTO registerDTO)
+        {
+            UserRegisterDTO user = new UserRegisterDTO();
+            HMACSHA512 hMACSHA = new HMACSHA512();
+            user.Password_Hashkey = hMACSHA.Key;
+            user.Username = registerDTO.Username;
+            user.IsAdmin = false;
+            user.Password = hMACSHA.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password));
+            user.Address = registerDTO.Address;
+            user.Email = registerDTO.Email;
+            user.Date_of_Birth = registerDTO.Date_of_Birth;
+            user.Phone_Number = registerDTO.Phone_Number;
+            user.Gender = registerDTO.Gender;
+            user.Profile_Picture_URL = registerDTO.Profile_Picture_URL;
+            user.Name = registerDTO.Name;
+            return user;
         }
 
         [Test]
@@ -31,14 +56,11 @@ namespace ShoppingAppTest.RepositoryTests
         {
             // Arrange
             var context = GetInMemoryDbContext();
-            var repository = new RegistrationRepository(context);
-            var userRegisterDTO = new UserRegisterDTO
+            _registrationRepository = new RegistrationRepository(context);
+            var userRegisterDTO = new RegisterDTO
             {
                 Username = "testuser",
-                Password = Encoding.UTF8.GetBytes("password"),
-                Password_Hashkey = Encoding.UTF8.GetBytes("hashkey"),
-                IsAdmin = false,
-                Role = Enums.UserRole.Customer,
+                Password = "123456",
                 Email = "customer@example.com",
                 Name = "John Doe",
                 Address = "123 Main St",
@@ -47,9 +69,10 @@ namespace ShoppingAppTest.RepositoryTests
                 Gender = "Male",
                 Profile_Picture_URL = "http://example.com/profile.jpg"
             };
-
+            UserRegisterDTO userRepostioryRegisterDTO = MapUserRegisterDTO(userRegisterDTO);
+            userRepostioryRegisterDTO.Role = Enums.UserRole.Customer;
             // Act
-            var result = await repository.AddCustomer_UserTransaction(userRegisterDTO);
+            var result = await _registrationRepository.AddCustomer_UserTransaction(userRepostioryRegisterDTO);
 
             // Assert
             Assert.NotNull(result.customer);
@@ -64,24 +87,23 @@ namespace ShoppingAppTest.RepositoryTests
             // Arrange
             var context = GetInMemoryDbContext();
             var repository = new RegistrationRepository(context);
-            var userRegisterDTO = new UserRegisterDTO
+            var userRegisterDTO = new RegisterDTO
             {
-                Username = "testseller",
-                Password = Encoding.UTF8.GetBytes("password"),
-                Password_Hashkey = Encoding.UTF8.GetBytes("hashkey"),
-                IsAdmin = false,
-                Role = Enums.UserRole.Seller,
-                Email = "seller@example.com",
-                Name = "Jane Doe",
-                Address = "456 Elm St",
-                Phone_Number = "987-654-3210",
-                Date_of_Birth = new DateTime(1985, 5, 15),
-                Gender = "Female",
+                Username = "testuser",
+                Password = "123456",
+                Email = "customer@example.com",
+                Name = "John Doe",
+                Address = "123 Main St",
+                Phone_Number = "123-456-7890",
+                Date_of_Birth = new DateTime(1990, 1, 1),
+                Gender = "Male",
                 Profile_Picture_URL = "http://example.com/profile.jpg"
             };
+            UserRegisterDTO userRepostioryRegisterDTO = MapUserRegisterDTO(userRegisterDTO);
+            userRepostioryRegisterDTO.Role = Enums.UserRole.Seller;
 
             // Act
-            var result = await repository.AddSeller_UserTransaction(userRegisterDTO);
+            var result = await repository.AddSeller_UserTransaction(userRepostioryRegisterDTO);
 
             // Assert
             Assert.NotNull(result.seller);
@@ -96,33 +118,24 @@ namespace ShoppingAppTest.RepositoryTests
             // Arrange
             var context = GetInMemoryDbContext();
             var repository = new RegistrationRepository(context);
-            var userRegisterDTO = new UserRegisterDTO
+            var userRegisterDTO = new RegisterDTO
             {
                 Username = "testuser",
-                Password = Encoding.UTF8.GetBytes("password"),
-                Password_Hashkey = Encoding.UTF8.GetBytes("hashkey"),
-                IsAdmin = false,
-                Role = Enums.UserRole.Customer,
+                Password = "123456",
                 Email = "customer@example.com",
-                Name = "John Doe",
                 Address = "123 Main St",
                 Phone_Number = "123-456-7890",
                 Date_of_Birth = new DateTime(1990, 1, 1),
                 Gender = "Male",
                 Profile_Picture_URL = "http://example.com/profile.jpg"
             };
+            UserRegisterDTO userRepostioryRegisterDTO = MapUserRegisterDTO(userRegisterDTO);
+            userRepostioryRegisterDTO.Role = Enums.UserRole.Customer;
 
             // Act & Assert
             Assert.ThrowsAsync<UnableToRegisterException>(async () =>
             {
-                using (var transaction = context.Database.BeginTransaction())
-                {
-                    var result = await repository.AddCustomer_UserTransaction(userRegisterDTO);
-
-                    // Simulate an error by throwing an exception after user is added
-                    context.Users.Add(new User { Username = null }); // This will cause a validation error
-                    await context.SaveChangesAsync();
-                }
+                var result = await repository.AddCustomer_UserTransaction(userRepostioryRegisterDTO);
             });
         }
 
@@ -132,33 +145,25 @@ namespace ShoppingAppTest.RepositoryTests
             // Arrange
             var context = GetInMemoryDbContext();
             var repository = new RegistrationRepository(context);
-            var userRegisterDTO = new UserRegisterDTO
+            var userRegisterDTO = new RegisterDTO
             {
-                Username = "testseller",
-                Password = Encoding.UTF8.GetBytes("password"),
-                Password_Hashkey = Encoding.UTF8.GetBytes("hashkey"),
-                IsAdmin = false,
-                Role = Enums.UserRole.Seller,
-                Email = "seller@example.com",
-                Name = "Jane Doe",
-                Address = "456 Elm St",
-                Phone_Number = "987-654-3210",
-                Date_of_Birth = new DateTime(1985, 5, 15),
-                Gender = "Female",
+                Username = "testuser",
+                Password = "123456",
+                Email = "customer@example.com",
+                Address = "123 Main St",
+                Phone_Number = "123-456-7890",
+                Date_of_Birth = new DateTime(1990, 1, 1),
+                Gender = "Male",
                 Profile_Picture_URL = "http://example.com/profile.jpg"
             };
+            UserRegisterDTO userRepostioryRegisterDTO = MapUserRegisterDTO(userRegisterDTO);
+            userRepostioryRegisterDTO.Role = Enums.UserRole.Seller;
 
             // Act & Assert
             Assert.ThrowsAsync<UnableToRegisterException>(async () =>
             {
-                using (var transaction = context.Database.BeginTransaction())
-                {
-                    var result = await repository.AddSeller_UserTransaction(userRegisterDTO);
+               var result = await repository.AddSeller_UserTransaction(userRepostioryRegisterDTO);
 
-                    // Simulate an error by throwing an exception after user is added
-                    context.Users.Add(new User { Username = null }); // This will cause a validation error
-                    await context.SaveChangesAsync();
-                }
             });
         }
     }

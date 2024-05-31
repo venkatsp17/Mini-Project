@@ -129,6 +129,42 @@ namespace ShoppingAppTest.RepositoryTests
         }
 
         [Test]
+        public async Task GetAll_Refund_ShouldReturnRefund()
+        {
+            // Arrange
+            var context = GetInMemoryDbContext();
+            var repository = new RefundRepository(context);
+            var refund = new Refund
+            {
+                OrderID = 1,
+                Amount = 50.0m,
+                Refund_Date = DateTime.Now,
+                Reason = "Product damaged",
+                Refund_Method = "Credit Card",
+                Status = Enums.RefundStatus.Pending
+            };
+            var refund1 = new Refund
+            {
+                OrderID = 2,
+                Amount = 50.0m,
+                Refund_Date = DateTime.Now,
+                Reason = "Product damaged",
+                Refund_Method = "Credit Card",
+                Status = Enums.RefundStatus.Pending
+            };
+            context.Refunds.Add(refund);
+            context.Refunds.Add(refund1);
+            await context.SaveChangesAsync();
+
+            // Act
+            var result = await repository.Get();
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
+
+        [Test]
         public async Task Get_Refund_ShouldThrowNotFoundException()
         {
             // Arrange
