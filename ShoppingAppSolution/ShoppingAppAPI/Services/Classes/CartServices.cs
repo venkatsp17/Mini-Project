@@ -1,12 +1,11 @@
 ﻿using ShoppingAppAPI.Exceptions;
 using ShoppingAppAPI.Models.DTO_s.Cart_DTO_s;
 using ShoppingAppAPI.Models;
-using ShoppingAppAPI.Repositories.Classes;
 using static ShoppingAppAPI.Models.Enums;
 using ShoppingAppAPI.Mappers;
 using ShoppingAppAPI.Services.Interfaces;
 using ShoppingAppAPI.Repositories.Interfaces;
-using System.Diagnostics.CodeAnalysis;
+
 
 namespace ShoppingAppAPI.Services.Classes
 {
@@ -16,13 +15,25 @@ namespace ShoppingAppAPI.Services.Classes
         private readonly IRepository<int, CartItem> _cartItemRepository;
         private readonly IProductRepository _productRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CartServices"/> class.
+        /// </summary>
+        /// <param name="cartRepository">The repository for managing carts.</param>
+        /// <param name="cartItemRepository">The repository for managing cart items.</param>
+        /// <param name="productRepository">The repository for managing products.</param>
         public CartServices(ICartRepository cartRepository, IRepository<int, CartItem> cartItemRepository, IProductRepository productRepository)
         {
             _cartRepository = cartRepository;
             _cartItemRepository = cartItemRepository;
             _productRepository = productRepository;
-        } 
-
+        }
+        /// <summary>
+        /// Adds an item to a shopping cart.
+        /// </summary>
+        /// <param name="cartItem">The item to add to the cart.</param>
+        /// <param name="cartID">The ID of the cart.</param>
+        /// <param name="customerID">The ID of the customer.</param>
+        /// <returns>The updated cart details.</returns>
         public async Task<CartReturnDTO> AddItemToCart(CartItemGetDTO cartItem, int cartID, int CustomerID)
         {
             try
@@ -100,7 +111,11 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToAddItemException(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Removes an item from a shopping cart.
+        /// </summary>
+        /// <param name="cartItemID">The ID of the cart item to remove.</param>
+        /// <returns>The updated cart details.</returns>
         public async Task<CartReturnDTO> RemoveItemFromCart(int cartItemID)
         {
             try
@@ -142,7 +157,12 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToUpdateItemException(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Updates the quantity of a cart item.
+        /// </summary>
+        /// <param name="CartItemID">The ID of the cart item to update.</param>
+        /// <param name="Quantity">The new quantity.</param>
+        /// <returns>The updated cart details.</returns>
         public async Task<CartReturnDTO> UpdateCartItemQuantity(int CartItemID, int Quantity)
         {
             try
@@ -180,7 +200,11 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToUpdateItemException(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Retrieves a cart by its ID.
+        /// </summary>
+        /// <param name="cartID">The ID of the cart.</param>
+        /// <returns>The cart details.</returns>
         public async Task<CartReturnDTO> GetCart(int cartID)
         {
             try
@@ -195,7 +219,11 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new Exception("Unable to Get Cart at this moment!");
             }
         }
-
+        /// <summary>
+        /// Closes a shopping cart.
+        /// </summary>
+        /// <param name="cartID">The ID of the cart to close.</param>
+        /// <returns>The closed cart details.</returns>
         public async Task<CartReturnDTO> CloseCart(int cartID)
         {
             try

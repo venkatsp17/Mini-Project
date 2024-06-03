@@ -10,10 +10,19 @@ namespace ShoppingAppAPI.Services.Classes
     public class CategoryServices : ICategoryServices
     {
         private readonly ICategoryRepository _categoryRepository;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CategoryServices"/> class.
+        /// </summary>
+        /// <param name="categoryRepository">The repository for managing categories.</param>
         public CategoryServices(ICategoryRepository categoryRepository) {
             _categoryRepository = categoryRepository;
         }
 
+        /// <summary>
+        /// Retrieves products belonging to a specific category.
+        /// </summary>
+        /// <param name="Name">The name of the category.</param>
+        /// <returns>A collection of products in the specified category.</returns>
         public async Task<IEnumerable<CustomerGetProductDTO>> GetProductsByCategory(string Name)
         {
             try

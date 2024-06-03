@@ -13,17 +13,40 @@ namespace ShoppingAppAPI.Services.Classes
     public class SellerServices : ISellerServices
     {
         private readonly ISellerRepository _sellerRepository;
-        public SellerServices(ISellerRepository sellerRepository) { 
+
+        /// <summary>
+        /// Constructor for SellerServices class.
+        /// </summary>
+        /// <param name="sellerRepository">Seller repository dependency.</param>
+        public SellerServices(ISellerRepository sellerRepository)
+        {
             _sellerRepository = sellerRepository;
         }
 
+        /// <summary>
+        /// Updates the last login time of a seller.
+        /// </summary>
+        /// <param name="SellerID">ID of the seller.</param>
+        /// <returns>Returns the updated seller entity.</returns>
         public async Task<Seller> UpdateSellerLastLogin(int SellerID)
         {
-            Seller seller = await _sellerRepository.Get(SellerID);
-            seller.Last_Login = DateTime.Now;
-            return await _sellerRepository.Update(seller);
+            try
+            {
+                Seller seller = await _sellerRepository.Get(SellerID);
+                seller.Last_Login = DateTime.Now;
+                return await _sellerRepository.Update(seller);
+            }
+            catch (Exception ex)
+            {
+                throw new UnableToUpdateItemException("Unable to update seller last login."+ ex);
+            }
         }
 
+        /// <summary>
+        /// Updates the profile of a seller.
+        /// </summary>
+        /// <param name="updateDTO">DTO containing seller update information.</param>
+        /// <returns>Returns the updated seller DTO.</returns>
         public async Task<SellerDTO> UpdateSeller(SellerUpdateDTO updateDTO)
         {
             try
@@ -37,13 +60,13 @@ namespace ShoppingAppAPI.Services.Classes
                 Seller updatedSeller = await _sellerRepository.Update(seller);
                 if (updatedSeller == null)
                 {
-                    throw new UnableToUpdateItemException("Unable to Update Profile at this moment!");
+                    throw new UnableToUpdateItemException("Unable to update seller profile.");
                 }
                 return SellerMapper.MapToSellerDTO(seller);
             }
             catch (Exception ex)
             {
-                throw new UnableToUpdateItemException(ex.Message);
+                throw new UnableToUpdateItemException("Unable to update seller profile."+ ex);
             }
         }
     }

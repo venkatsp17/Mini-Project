@@ -7,16 +7,8 @@
       "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\classes\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{551C2E2F-7685-4E77-9E52-72C39EB2FF4D}|ShoppingAppTest\\ShoppingAppTest.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingapptest\\service tests\\userservicestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{551C2E2F-7685-4E77-9E52-72C39EB2FF4D}|ShoppingAppTest\\ShoppingAppTest.csproj|solutionrelative:shoppingapptest\\service tests\\userservicestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{551C2E2F-7685-4E77-9E52-72C39EB2FF4D}|ShoppingAppTest\\ShoppingAppTest.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingapptest\\sqlitedbshoppingapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{551C2E2F-7685-4E77-9E52-72C39EB2FF4D}|ShoppingAppTest\\ShoppingAppTest.csproj|solutionrelative:shoppingapptest\\sqlitedbshoppingapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{551C2E2F-7685-4E77-9E52-72C39EB2FF4D}|ShoppingAppTest\\ShoppingAppTest.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingapptest\\shoppingapptest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{551C2E2F-7685-4E77-9E52-72C39EB2FF4D}|ShoppingAppTest\\ShoppingAppTest.csproj|solutionrelative:shoppingapptest\\shoppingapptest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|c:\\users\\vc\\desktop\\mini project\\shoppingappsolution\\shoppingappapi\\services\\classes\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF72558D-56B9-4F33-B425-6E8D607D8149}|ShoppingAppAPI\\ShoppingAppAPI.csproj|solutionrelative:shoppingappapi\\services\\classes\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 178,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,32 +35,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserServices.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
-              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
-              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
-              "ViewState": "AQIAAN4AAAAAAAAAAAAiwPEAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T10:34:15.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ShoppingAppTest",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppTest\\ShoppingAppTest.csproj",
-              "RelativeDocumentMoniker": "ShoppingAppTest\\ShoppingAppTest.csproj",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppTest\\ShoppingAppTest.csproj",
-              "RelativeToolTip": "ShoppingAppTest\\ShoppingAppTest.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-31T06:13:48.927Z",
-              "EditorCaption": ""
             }
           ]
         },
@@ -78,28 +44,28 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserServicesTests.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppTest\\Service Tests\\UserServicesTests.cs",
-              "RelativeDocumentMoniker": "ShoppingAppTest\\Service Tests\\UserServicesTests.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppTest\\Service Tests\\UserServicesTests.cs",
-              "RelativeToolTip": "ShoppingAppTest\\Service Tests\\UserServicesTests.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\UserServices.cs",
+              "ViewState": "AQIAAMoAAAAAAAAAAAAUwBQBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T10:34:39.691Z",
+              "WhenOpened": "2024-06-03T05:23:42.218Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SqliteDbShoppingAPP.cs",
-              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppTest\\SqliteDbShoppingAPP.cs",
-              "RelativeDocumentMoniker": "ShoppingAppTest\\SqliteDbShoppingAPP.cs",
-              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppTest\\SqliteDbShoppingAPP.cs",
-              "RelativeToolTip": "ShoppingAppTest\\SqliteDbShoppingAPP.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAtwCMAAAAXAAAA",
+              "DocumentIndex": 1,
+              "Title": "TokenServices.cs",
+              "DocumentMoniker": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\TokenServices.cs",
+              "RelativeDocumentMoniker": "ShoppingAppAPI\\Services\\Classes\\TokenServices.cs",
+              "ToolTip": "C:\\Users\\vc\\Desktop\\Mini Project\\ShoppingAppSolution\\ShoppingAppAPI\\Services\\Classes\\TokenServices.cs",
+              "RelativeToolTip": "ShoppingAppAPI\\Services\\Classes\\TokenServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T06:36:11.802Z",
+              "WhenOpened": "2024-06-03T05:20:35.279Z",
               "EditorCaption": ""
             }
           ]

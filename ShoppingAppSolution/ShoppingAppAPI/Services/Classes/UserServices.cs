@@ -68,7 +68,14 @@ namespace ShoppingAppAPI.Services.Classes
             returnDTO.Token = _tokenService.GenerateToken(user);
             return returnDTO;
         }
-
+        /// <summary>
+        /// Handles customer login functionality.
+        /// </summary>
+        /// <param name="loginDTO">LoginDTO containing user credentials.</param>
+        /// <returns>LoginReturnDTO with user details and token.</returns>
+        /// <exception cref="UnauthorizedUserException">Thrown when user authentication fails.</exception>
+        /// <exception cref="AccountInActiveException">Thrown when the user's account is not active.</exception>
+        /// <exception cref="UnableToLoginException">Thrown when unable to complete the login process.</exception>
         public async Task<LoginReturnDTO> CustomerLogin(LoginDTO loginDTO)
         {
             try
@@ -112,7 +119,13 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToLoginException(e.Message);
             }
         }
-
+        /// <summary>
+        /// Handles customer registration functionality.
+        /// </summary>
+        /// <param name="userRegisterDTO">RegisterDTO containing user registration details.</param>
+        /// <returns>RegisterReturnDTO with registered user details.</returns>
+        /// <exception cref="UserAlreadyExistsException">Thrown when a user with the provided email already exists.</exception>
+        /// <exception cref="UnableToRegisterException">Thrown when unable to complete the registration process.</exception>
         public async Task<RegisterReturnDTO> CustomerRegister(RegisterDTO userRegisterDTO)
         {
             try
@@ -176,7 +189,14 @@ namespace ShoppingAppAPI.Services.Classes
             user.Name = registerDTO.Name;
             return user;
         }
-
+        /// <summary>
+        /// Handles seller login functionality.
+        /// </summary>
+        /// <param name="loginDTO">LoginDTO containing user credentials.</param>
+        /// <returns>LoginReturnDTO with user details and token.</returns>
+        /// <exception cref="UnauthorizedUserException">Thrown when user authentication fails.</exception>
+        /// <exception cref="AccountInActiveException">Thrown when the user's account is not active.</exception>
+        /// <exception cref="UnableToLoginException">Thrown when unable to complete the login process.</exception>
         public async Task<LoginReturnDTO> SellerLogin(LoginDTO loginDTO)
         {
             try
@@ -220,7 +240,13 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToLoginException(e.Message);
             }
         }
-
+        /// <summary>
+        /// Handles seller registration functionality.
+        /// </summary>
+        /// <param name="userRegisterDTO">RegisterDTO containing user registration details.</param>
+        /// <returns>RegisterReturnDTO with registered user details.</returns>
+        /// <exception cref="UserAlreadyExistsException">Thrown when a user with the provided email already exists.</exception>
+        /// <exception cref="UnableToRegisterException">Thrown when unable to complete the registration process.</exception>
         public async Task<RegisterReturnDTO> SellerRegister(RegisterDTO userRegisterDTO)
         {
             try

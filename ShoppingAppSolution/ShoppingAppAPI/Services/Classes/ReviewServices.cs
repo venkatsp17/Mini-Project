@@ -10,11 +10,19 @@ namespace ShoppingAppAPI.Services.Classes
     public class ReviewServices : IReviewServices
     {
         private readonly IRepository<int, Review> _reviewRepository;
-
+        /// <summary>
+        /// Constructor for ReviewServices class.
+        /// </summary>
+        /// <param name="reviewRepository">Review repository dependency.</param>
         public ReviewServices(IRepository<int, Review> reviewRepository) { 
             _reviewRepository = reviewRepository;
         }
-
+        /// <summary>
+        /// Adds a new review.
+        /// </summary>
+        /// <param name="reviewDto">Review information DTO.</param>
+        /// <returns>Returns the added review DTO.</returns>
+        /// <exception cref="UnableToAddItemException">Thrown when unable to review in the database</exception>
         public async Task<ReviewReturnDTO> AddReview(ReviewGetDTO reviewDto)
         {
             try

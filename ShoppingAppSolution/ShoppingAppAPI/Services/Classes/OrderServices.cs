@@ -16,6 +16,10 @@ namespace ShoppingAppAPI.Services.Classes
         private readonly ICartRepository _cartRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICartServices _cartServices;
+
+        /// <summary>
+        /// Constructor for OrderServices class.
+        /// </summary>
         public OrderServices(IRepository<int, Order> orderRepository, 
             IUnitOfWork unitOfWork, 
             IOrderDetailRepository orderDetailRepository,
@@ -31,7 +35,14 @@ namespace ShoppingAppAPI.Services.Classes
             _cartServices = cartServices;
             _refundRepository = refundRepository;
         }
-
+        /// <summary>
+        /// Place Order from collecting details from cart.
+        /// </summary>
+        /// <param name="placeOrderDTO">The PlaceOrderDTO get Order Details</param>
+        /// <returns>Return necessary order details for customer after placing the order</returns>
+        /// <exception cref="NoAvailableItemException">Thrown when no carts are available.</exception>
+        /// <exception cref="EmptyCartException">Thrown when cart is empty.</exception>
+        /// <exception cref="UnableToAddItemException">Thrown when unable to add item to database.</exception>
         public async Task<CustomerOrderReturnDTO> PlaceOrder(PlaceOrderDTO placeOrderDTO)
         {
             using (var transaction = _unitOfWork.BeginTransaction())
@@ -103,7 +114,14 @@ namespace ShoppingAppAPI.Services.Classes
             }
 
         }
-
+        /// <summary>
+        /// Update Order status by Order ID
+        /// </summary>
+        /// <param name="orderStatus">The order status to be updated</param>
+        /// <param name="OrderID">The order id of the order to updated</param>
+        /// <returns>Return necessary order details for seller after updating the order</returns>
+        /// <exception cref="NotFoundException">Thrown when order not found.</exception>
+        /// <exception cref="UnableToUpdateItemException">Thrown when unable to update order status.</exception>
         public async Task<SellerOrderReturnDTO> UpdateOrderStatus(OrderStatus orderStatus, int OrderID)
         {
             try
@@ -127,7 +145,12 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToUpdateItemException(ex.Message);
             }
         }
-      
+        /// <summary>
+        /// View All Active Orders for seller
+        /// </summary>
+        /// <param name="SellerID">To fetch orders of particular seller using ID</param>
+        /// <returns>Return necessary order details for seller</returns>
+        /// <exception cref="NoAvailableItemException">Thrown when order not found.</exception>
         public async Task<IEnumerable<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID)
         {
             try
@@ -151,7 +174,12 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new Exception(ex.Message); 
             }
         }
-
+        /// <summary>
+        /// View customer's order history
+        /// </summary>
+        /// <param name="CustomerID">To fetch orders of particular customer</param>
+        /// <returns>Return necessary order details for customers</returns>
+        /// <exception cref="NoAvailableItemException">Thrown when order not found.</exception>
         public async Task<IEnumerable<CustomerOrderReturnDTO>> ViewCustomerOrderHistory(int CustomerID)
         {
             try
@@ -170,7 +198,14 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new NoAvailableItemException(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Cancel Order By Customer
+        /// </summary>
+        /// <param name="OrderID">To cancel particular order of Order ID</param>
+        /// <returns>Return necessary order detail of cancelled order</returns>
+        /// <exception cref="NotFoundException">Thrown when order not found.</exception>
+        /// <exception cref="NotAllowedToCancelOrderException">Thrown when order is shipped, delivered, cancelled</exception>
+        /// <exception cref="UnableToUpdateItemException">Thrown when unable to update the order status.</exception>
         public async Task<CustomerOrderReturnDTO> CustomerCancelOrder(int OrderID)
         {
             using (var transaction = _unitOfWork.BeginTransaction())
@@ -224,7 +259,13 @@ namespace ShoppingAppAPI.Services.Classes
                 }
             }
         }
-
+        /// <summary>
+        /// Update Order specific details By Customer
+        /// </summary>
+        /// <param name="updateOrderDeliveryDetailsDTO">The details of order to be updated</param>
+        /// <returns>Return necessary order detail of updated order</returns>
+        /// <exception cref="NotFoundException">Thrown when order not found.</exception>
+        /// <exception cref="UnableToUpdateItemException">Thrown when unable to update the order status.</exception>
         public async Task<CustomerOrderReturnDTO> UpdateOrderDeliveryDetails(UpdateOrderDeliveryDetailsDTO updateOrderDeliveryDetailsDTO)
         {
             try
