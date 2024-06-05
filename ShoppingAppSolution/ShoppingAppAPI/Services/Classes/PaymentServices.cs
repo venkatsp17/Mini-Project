@@ -13,14 +13,14 @@ namespace ShoppingAppAPI.Services.Classes
     public class PaymentServices : IPaymentServices
     {
         private readonly IRepository<int, Payment> _paymentRepository;
-        private readonly IRepository<int, Order> _orderRepository;
+        private readonly IOrderRepository _orderRepository;
 
         /// <summary>
         /// Constructor for PaymentServices class.
         /// </summary>
         /// <param name="paymentRepository">Payment repository dependency.</param>
         /// <param name="orderRepository">Order repository dependency.</param>
-        public PaymentServices(IRepository<int, Payment> paymentRepository, IRepository<int, Order> orderRepository)
+        public PaymentServices(IRepository<int, Payment> paymentRepository, IOrderRepository orderRepository)
         {
             _paymentRepository = paymentRepository;
             _orderRepository = orderRepository;
@@ -46,7 +46,7 @@ namespace ShoppingAppAPI.Services.Classes
                 {
                     OrderID = paymentGetDTO.OrderID,
                     Payment_Method = paymentGetDTO.Payment_Method,
-                    Amount = paymentGetDTO.Amount,
+                    Amount = order.Total_Amount,
                     Transaction_Date = DateTime.Now,
                     Payment_Status = Enums.PaymentStatus.Authorized,
                 };

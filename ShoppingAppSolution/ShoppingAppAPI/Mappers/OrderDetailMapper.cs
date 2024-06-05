@@ -15,7 +15,7 @@ namespace ShoppingAppAPI.Mappers
                OrderID = orderDetail.OrderID,
                ProductID = orderDetail.ProductID,
                Quantity = orderDetail.Quantity,
-               Unit_Price = orderDetail.Unit_Price,
+               Price = orderDetail.Price,
             };
         }
     }

@@ -69,6 +69,27 @@ namespace ShoppingAppAPI.Controllers
         }
 
         [Authorize(Roles = "Customer")]
+        [HttpGet("ViewCurrentOrders")]
+        [ProducesResponseType(typeof(IEnumerable<CustomerOrderReturnDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<CustomerOrderReturnDTO>>> ViewCurrentOrders(int CustomerID)
+        {
+            try
+            {
+                var result = await _orderServices.ViewAllCustomerActiveOrders(CustomerID);
+                return Ok(result);
+            }
+            catch (NoAvailableItemException ex)
+            {
+                return NotFound(new ErrorModel(404, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
         [HttpPut("CustomerCancelOrder")]
         [ProducesResponseType(typeof(IEnumerable<CustomerOrderReturnDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]

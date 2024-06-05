@@ -37,7 +37,7 @@ namespace ShoppingAppAPI.Mappers
                 Brand = product.Brand,
                 Image_URL = product.Image_URL,
                 Seller = SellerMapper.MapToSellerDTO(product.Seller),
-                Reviews = product.Reviews.Select(r => new ReviewReturnDTO
+                Reviews = product.Reviews == null ? new List<ReviewReturnDTO>() : product.Reviews.Select(r => new ReviewReturnDTO
                 {
                     ReviewID = r.ReviewID,
                     ProductID = r.ProductID,

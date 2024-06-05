@@ -9,7 +9,7 @@ namespace ShoppingAppAPI.Repositories.Classes
     /// <summary>
     /// Repository class for managing orders in the shopping application.
     /// </summary>
-    public class OrderRepository : IRepository<int, Order>
+    public class OrderRepository : IOrderRepository
     {
         private readonly ShoppingAppContext _context;
 
@@ -79,6 +79,11 @@ namespace ShoppingAppAPI.Repositories.Classes
         public async Task<IEnumerable<Order>> Get()
         {
             return await _context.Orders.Include(o => o.OrderDetails).Include(o => o.Customer).ToListAsync() ?? throw new NoAvailableItemException("Orders");
+        }
+
+        public async Task<IEnumerable<Order>> GetCustomerOrders(int CustomerID)
+        {
+            return await _context.Orders.Include(o => o.OrderDetails).Include(o => o.Customer).Where(o=>o.CustomerID==CustomerID).ToListAsync();
         }
     }
 }

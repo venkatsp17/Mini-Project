@@ -7,7 +7,7 @@ namespace ShoppingAppAPI.Services.Interfaces
 {
     public interface ICartServices
     {
-        Task<CartReturnDTO> AddItemToCart(CartItemGetDTO CartItem, int CartID, int CustomerID);
+        Task<CartReturnDTO> AddItemToCart(CartItemGetDTO CartItem, int CustomerID);
         Task<CartReturnDTO> RemoveItemFromCart(int CartItemID);
         Task<CartReturnDTO> UpdateCartItemQuantity(int CartItemID, int Quantity);
         Task<CartReturnDTO> GetCart(int CartID);

@@ -25,11 +25,11 @@ namespace ShoppingAppAPI.Controllers
         [HttpPost("AddItemToCart")]
         [ProducesResponseType(typeof(CartReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<CartReturnDTO>> AddItemToCart(CartItemGetDTO cartItemGetDTO, int CustomerID, int CartID)
+        public async Task<ActionResult<CartReturnDTO>> AddItemToCart(CartItemGetDTO cartItemGetDTO, int CustomerID)
         {
             try
             {
-                var result = await _cartServices.AddItemToCart(cartItemGetDTO,CartID,CustomerID);
+                var result = await _cartServices.AddItemToCart(cartItemGetDTO,CustomerID);
                 return Ok(result);
             }
             catch (UnableToAddItemException ex)

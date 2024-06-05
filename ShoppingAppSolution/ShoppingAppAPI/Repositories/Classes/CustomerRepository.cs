@@ -92,7 +92,7 @@ namespace ShoppingAppAPI.Repositories.Classes
             var customer = await _context.Customers
                  .Include(c => c.Cart)
                  .Include(c => c.Orders)
-                 .FirstOrDefaultAsync(c => c.Email == email) ?? throw new NotFoundException("Customer");
+                 .FirstOrDefaultAsync(c => c.Email == email);
             return customer;
         }
     }

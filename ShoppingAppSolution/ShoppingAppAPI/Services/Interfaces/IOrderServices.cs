@@ -8,6 +8,8 @@ namespace ShoppingAppAPI.Services.Interfaces
     {
         Task<IEnumerable<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID);
 
+        Task<IEnumerable<CustomerOrderReturnDTO>> ViewAllCustomerActiveOrders(int CustomerID);
+
         Task<SellerOrderReturnDTO> UpdateOrderStatus(OrderStatus orderStatus, int OrderID);
 
         Task<CustomerOrderReturnDTO> PlaceOrder(PlaceOrderDTO placeOrderDTO);

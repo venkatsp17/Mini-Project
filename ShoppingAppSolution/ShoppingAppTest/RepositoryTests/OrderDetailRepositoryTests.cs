@@ -37,7 +37,7 @@ namespace ShoppingAppTest.RepositoryTests
                 SellerID =1,
                 ProductID = 1,
                 Quantity = 2,
-                Unit_Price = 50.0m
+                Price = 50.0m
             };
 
             // Act
@@ -61,7 +61,7 @@ namespace ShoppingAppTest.RepositoryTests
                 SellerID = 1,
                 ProductID = 1,
                 Quantity = 2,
-                Unit_Price = 50.0m
+                Price = 50.0m
             };
             context.OrderDetails.Add(orderDetail);
             await context.SaveChangesAsync();
@@ -87,7 +87,7 @@ namespace ShoppingAppTest.RepositoryTests
                 ProductID = 1,
                 SellerID = 1,
                 Quantity = 2,
-                Unit_Price = 50.0m
+                Price = 50.0m
             };
             context.OrderDetails.Add(orderDetail);
             await context.SaveChangesAsync();
@@ -112,7 +112,7 @@ namespace ShoppingAppTest.RepositoryTests
                 ProductID = 1,
                 SellerID = 1,
                 Quantity = 2,
-                Unit_Price = 50.0m
+                Price = 50.0m
             };
             context.OrderDetails.Add(orderDetail);
             await context.SaveChangesAsync();
@@ -137,7 +137,7 @@ namespace ShoppingAppTest.RepositoryTests
                 ProductID = 1,
                 SellerID = 1,
                 Quantity = 2,
-                Unit_Price = 50.0m
+                Price = 50.0m
             };
             var orderDetail1 = new OrderDetail
             {
@@ -145,7 +145,7 @@ namespace ShoppingAppTest.RepositoryTests
                 ProductID = 2,
                 SellerID = 1,
                 Quantity = 2,
-                Unit_Price = 70.0m
+                Price = 70.0m
             };
             context.OrderDetails.Add(orderDetail);
             context.OrderDetails.Add(orderDetail1);

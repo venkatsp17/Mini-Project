@@ -166,17 +166,6 @@ namespace ShoppingAppTest.RepositoryTests
         }
 
         [Test]
-        public async Task GetCustomerByEmail_ShouldThrowNotFoundException()
-        {
-            // Arrange
-            var context = GetInMemoryDbContext();
-            var repository = new CustomerRepository(context);
-
-            // Act & Assert
-            Assert.ThrowsAsync<NotFoundException>(async () => await repository.GetCustomerByEmail("nonexistent@example.com"));
-        }
-
-        [Test]
         public async Task GetAll_Customers_ShouldReturnAllCustomers()
         {
             // Arrange

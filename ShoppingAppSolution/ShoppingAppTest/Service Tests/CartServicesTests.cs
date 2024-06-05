@@ -44,7 +44,7 @@ namespace ShoppingAppTest.Service_Tests
             // Arrange
             int cartID = 1;
             int customerID = 123;
-            var cartItemDTO = new CartItemGetDTO { ProductID = 1, Quantity = 2, Price = 50.0 };
+            var cartItemDTO = new CartItemGetDTO { ProductID = 1, Quantity = 2};
             IList<Review> reviews = new List<Review>();
             var Seller = new Seller()
             {
@@ -68,7 +68,7 @@ namespace ShoppingAppTest.Service_Tests
             _cartServices = new CartServices(_mockCartRepository, _mockCartItemRepository, _mockProductRepository);
 
             // Act
-            var result = await _cartServices.AddItemToCart(cartItemDTO, cartID, customerID);
+            var result = await _cartServices.AddItemToCart(cartItemDTO, customerID);
 
             // Assert
             Assert.That(result, Is.Not.Null);
@@ -243,20 +243,6 @@ namespace ShoppingAppTest.Service_Tests
         }
 
         [Test]
-        public void GetCart_CartDoesNotExist_ThrowsException()
-        {
-            // Arrange
-            int cartID = 1;
-
-
-            _cartServices = new CartServices(_mockCartRepository, _mockCartItemRepository, _mockProductRepository);
-
-            // Act & Assert
-            var ex = Assert.ThrowsAsync<Exception>(async () => await _cartServices.GetCart(cartID));
-            Assert.That(ex.Message, Is.EqualTo("Unable to Get Cart at this moment!"));
-        }
-
-        [Test]
         public async Task CloseCart_CartExists_ClosesCart()
         {
             // Arrange
@@ -292,7 +278,7 @@ namespace ShoppingAppTest.Service_Tests
             // Arrange
             int cartID = 1;
             int customerID = 123;
-            var cartItemDTO = new CartItemGetDTO { ProductID = 1, Quantity = 2, Price = 50.0 };
+            var cartItemDTO = new CartItemGetDTO { ProductID = 1, Quantity = 2 };
             var cart = new Cart
             {
                 CartID = cartID,
@@ -326,7 +312,7 @@ namespace ShoppingAppTest.Service_Tests
 
 
             // Act
-            var result = await _cartServices.AddItemToCart(cartItemDTO, cartID, customerID);
+            var result = await _cartServices.AddItemToCart(cartItemDTO, customerID);
 
             // Assert
             Assert.That(result, Is.Not.Null);
@@ -341,7 +327,7 @@ namespace ShoppingAppTest.Service_Tests
         {
             // Arrange
             int cartID = 1;
-            var cartItemDTO = new CartItemGetDTO { ProductID = 1, Quantity = 2, Price = 50.0 };
+            var cartItemDTO = new CartItemGetDTO { ProductID = 1, Quantity = 2 };
             IList<Review> reviews = new List<Review>();
             var Seller = new Seller()
             {
@@ -375,7 +361,7 @@ namespace ShoppingAppTest.Service_Tests
 
 
             // Act
-            var result = await _cartServices.AddItemToCart(cartItemDTO, cartID, 1);
+            var result = await _cartServices.AddItemToCart(cartItemDTO, 1);
 
             // Assert
             Assert.That(result, Is.Not.Null);

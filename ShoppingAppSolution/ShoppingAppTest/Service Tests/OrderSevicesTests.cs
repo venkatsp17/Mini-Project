@@ -312,7 +312,7 @@ namespace ShoppingAppTest.Service_Tests
                 Quantity = 2,
                 OrderID = order.OrderID,
                 SellerID = 1,
-                Unit_Price = 100.0m,
+                Price = 100.0m,
                 Order = order,
             };
             await _orderRepository.Add(order);

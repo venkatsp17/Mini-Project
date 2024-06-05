@@ -8,7 +8,7 @@ namespace ShoppingAppAPI.Models.DTO_s.OrderDetail_DTO
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public int Quantity { get; set; }
-        public decimal Unit_Price { get; set; }
+        public decimal Price { get; set; }
 
 
     }

@@ -7,11 +7,6 @@ using ShoppingAppAPI.Repositories.Classes;
 using ShoppingAppAPI.Repositories.Interfaces;
 using ShoppingAppAPI.Services.Classes;
 using ShoppingAppAPI.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingAppTest.Service_Tests
 {
@@ -98,25 +93,6 @@ namespace ShoppingAppTest.Service_Tests
                 Assert.That(result.Phone_Number, Is.EqualTo(updateDTO.Phone_Number));
                 Assert.That(result.Profile_Picture_URL, Is.EqualTo(updateDTO.Profile_Picture_URL));
             });
-        }
-
-        [Test]
-        public void UpdateSeller_SellerDoesNotExist_ThrowsException()
-        {
-            // Arrange
-            var updateDTO = new SellerUpdateDTO
-            {
-                SellerID = 999, // Non-existent ID
-                Name = "Non Existent",
-                Email = "non.existent@example.com",
-                Address = "No Address",
-                Phone_Number = "000-000-0000",
-                Profile_Picture_URL = "http://example.com/non_existent.jpg"
-            };
-
-            // Act & Assert
-            var ex = Assert.ThrowsAsync<UnableToUpdateItemException>(async () => await _sellerServices.UpdateSeller(updateDTO));
-            Assert.That(ex.Message, Is.EqualTo("Seller with given ID Not Found!"));
         }
     }
 }

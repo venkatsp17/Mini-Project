@@ -78,7 +78,6 @@ namespace ShoppingAppTest.Service_Tests
             {
                 OrderID = 1,
                 Payment_Method = "Credit Card",
-                Amount = 200.0m
             };
 
             // Act
@@ -87,7 +86,6 @@ namespace ShoppingAppTest.Service_Tests
             // Assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result.OrderID, Is.EqualTo(paymentGetDTO.OrderID));
-            Assert.That(result.Amount, Is.EqualTo(paymentGetDTO.Amount));
         }
 
         [Test]
@@ -98,7 +96,6 @@ namespace ShoppingAppTest.Service_Tests
             {
                 OrderID = 999, // Non-existing OrderID
                 Payment_Method = "Credit Card",
-                Amount = 200.0m
             };
 
             // Act & Assert
@@ -119,7 +116,6 @@ namespace ShoppingAppTest.Service_Tests
             {
                 OrderID = 1,
                 Payment_Method = "Credit Card",
-                Amount = 200.0m
             };
 
             // Act & Assert
@@ -135,7 +131,6 @@ namespace ShoppingAppTest.Service_Tests
             {
                 OrderID = 1,
                 Payment_Method = "Credit Card",
-                Amount = 200.0m
             };
 
             // Simulate failure to add payment by using a mock repository that returns null on add

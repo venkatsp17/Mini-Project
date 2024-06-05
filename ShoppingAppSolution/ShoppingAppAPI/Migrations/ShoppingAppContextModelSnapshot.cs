@@ -202,6 +202,9 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
@@ -210,9 +213,6 @@ namespace ShoppingAppAPI.Migrations
 
                     b.Property<int>("SellerID")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("Unit_Price")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("OrderDetailID");
 

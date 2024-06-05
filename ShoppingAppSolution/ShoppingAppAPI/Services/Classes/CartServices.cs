@@ -34,11 +34,11 @@ namespace ShoppingAppAPI.Services.Classes
         /// <param name="cartID">The ID of the cart.</param>
         /// <param name="customerID">The ID of the customer.</param>
         /// <returns>The updated cart details.</returns>
-        public async Task<CartReturnDTO> AddItemToCart(CartItemGetDTO cartItem, int cartID, int CustomerID)
+        public async Task<CartReturnDTO> AddItemToCart(CartItemGetDTO cartItem, int CustomerID)
         {
             try
             {
-                var cart = await _cartRepository.Get(cartID);
+                var cart = await _cartRepository.GetCartByCustomerID(CustomerID);
 
                 if (cart == null)
                 {
@@ -63,7 +63,7 @@ namespace ShoppingAppAPI.Services.Classes
                         CartID = cart.CartID,
                         ProductID = cartItem.ProductID,
                         Quantity = cartItem.Quantity,
-                        Price = cartItem.Price
+                        Price = (double)(product.Price*cartItem.Quantity)
                     };
                     var newCartItem = await _cartItemRepository.Add(newItem);
                     if (newCartItem == null)
@@ -91,7 +91,7 @@ namespace ShoppingAppAPI.Services.Classes
                             CartID = cart.CartID,
                             ProductID = cartItem.ProductID,
                             Quantity = cartItem.Quantity,
-                            Price = cartItem.Price
+                            Price = (double)(cartItem.Quantity*product.Price)
                         };
                         var newCartItem = await _cartItemRepository.Add(newItem);
                         if (newCartItem == null)
@@ -167,6 +167,7 @@ namespace ShoppingAppAPI.Services.Classes
         {
             try
             {
+  
                 var existingcartItem = await _cartItemRepository.Get(CartItemID);
                 if (existingcartItem == null) throw new NotFoundException("CartItem not found.");
 
@@ -174,7 +175,16 @@ namespace ShoppingAppAPI.Services.Classes
                 if (cart == null) throw new NotFoundException("Cart not found.");
 
                 var product = await _productRepository.Get(existingcartItem.ProductID);
-
+                if (Quantity <= 0)
+                {
+                    var deletedCartItem = await _cartItemRepository.Delete(existingcartItem.CartItemID);
+                    cart.Last_Updated = DateTime.Now;
+                    if (deletedCartItem == null)
+                    {
+                        throw new UnableToUpdateItemException("Unable to update Item from Cart at this moment!");
+                    }
+                    return CartMapper.MapCartToDTO(cart);
+                }
                 existingcartItem.Quantity = Quantity;
                 existingcartItem.Price = (double)(product.Price * existingcartItem.Quantity); // Update price based on quantity
                 var updatedCartItem = await _cartItemRepository.Update(existingcartItem);
@@ -192,7 +202,6 @@ namespace ShoppingAppAPI.Services.Classes
                 {
 
                 }
-
                 return CartMapper.MapCartToDTO(cart);
             }
             catch (Exception ex)
@@ -210,13 +219,13 @@ namespace ShoppingAppAPI.Services.Classes
             try
             {
                 var cart = await _cartRepository.Get(cartID);
-                if (cart == null) throw new NotFoundException("Cart not found.");
+                if (cart == null) throw new NotFoundException("Cart");
 
                 return CartMapper.MapCartToDTO(cart);
             }
-            catch(Exception ex)
+            catch(NotFoundException ex)
             {
-                throw new Exception("Unable to Get Cart at this moment!");
+                throw new NotFoundException("Cart");
             }
         }
         /// <summary>

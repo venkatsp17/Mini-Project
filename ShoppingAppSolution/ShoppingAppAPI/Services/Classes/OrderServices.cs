@@ -10,7 +10,7 @@ namespace ShoppingAppAPI.Services.Classes
 {
     public class OrderServices : IOrderServices
     {
-        private readonly IRepository<int, Order> _orderRepository;
+        private readonly IOrderRepository _orderRepository;
         private readonly IRepository<int, Refund> _refundRepository;
         private readonly IOrderDetailRepository _orderDetailRepository;
         private readonly ICartRepository _cartRepository;
@@ -20,7 +20,7 @@ namespace ShoppingAppAPI.Services.Classes
         /// <summary>
         /// Constructor for OrderServices class.
         /// </summary>
-        public OrderServices(IRepository<int, Order> orderRepository, 
+        public OrderServices(IOrderRepository orderRepository, 
             IUnitOfWork unitOfWork, 
             IOrderDetailRepository orderDetailRepository,
             ICartRepository cartRepository,
@@ -65,7 +65,7 @@ namespace ShoppingAppAPI.Services.Classes
                         Order_Date = DateTime.Now,
                         Status = OrderStatus.Pending,
                         Address = placeOrderDTO.Address,
-                        Total_Amount = (decimal)totalPrice,
+                        Total_Amount = (decimal)totalPrice + placeOrderDTO.Shipping_Cost,
                         Shipping_Method = placeOrderDTO.Shipping_Method,
                         Shipping_Cost = placeOrderDTO.Shipping_Cost,
                     };
@@ -82,7 +82,7 @@ namespace ShoppingAppAPI.Services.Classes
                         Quantity = od.Quantity,
                         OrderID = newOrder.OrderID,
                         SellerID = od.Product.SellerID,
-                        Unit_Price = (decimal)od.Price,
+                        Price = (decimal)od.Price,
                     }).ToList();
 
                     ICollection<OrderDetail> newOrderDetails = new List<OrderDetail>(); ;
@@ -174,6 +174,32 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new Exception(ex.Message); 
             }
         }
+
+
+        public async Task<IEnumerable<CustomerOrderReturnDTO>> ViewAllCustomerActiveOrders(int CustomerID)
+        {
+            try
+            {
+                IEnumerable<Order> orders = await _orderRepository.GetCustomerOrders(CustomerID);
+                if (!orders.Any())
+                {
+                    throw new NoAvailableItemException("Orders");
+                }
+
+                var activeOrders = orders
+                    .Where(o => o.Status == OrderStatus.Shipped ||
+                                 o.Status == OrderStatus.Pending ||
+                                 o.Status == OrderStatus.Processing);
+                return activeOrders.Select(o => OrderMapper.MapToCustomerOrderReturnDTO(o));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
         /// <summary>
         /// View customer's order history
         /// </summary>
