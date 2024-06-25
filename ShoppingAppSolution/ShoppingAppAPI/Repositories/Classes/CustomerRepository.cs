@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ShoppingAppAPI.Contexts;
 using ShoppingAppAPI.Exceptions;
 using ShoppingAppAPI.Models;
@@ -94,6 +95,11 @@ namespace ShoppingAppAPI.Repositories.Classes
                  .Include(c => c.Orders)
                  .FirstOrDefaultAsync(c => c.Email == email);
             return customer;
+        }
+
+        public async Task<Customer> GetCustomerByUserID(int key)
+        {
+            return await _context.Customers.FirstOrDefaultAsync(c => c.UserID == key) ?? throw new NotFoundException("Customer");
         }
     }
 }

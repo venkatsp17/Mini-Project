@@ -9,5 +9,8 @@ namespace ShoppingAppAPI.Services.Interfaces
         Task<Customer> UpdateCustomerLastLogin(int CustomerID);
 
         Task<CustomerDTO> UpdateCustomer(CustomerUpdateDTO updateDTO);
+
+        Task<CustomerDTO> GetCustomerProfile(int UserID);
+
     }
 }

@@ -18,6 +18,19 @@ namespace ShoppingAppAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            #region cors
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://127.0.0.1:5501")
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
+            #endregion
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -90,6 +103,7 @@ namespace ShoppingAppAPI
             builder.Services.AddScoped<ISellerRepository, SellerRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IRegistrationRepository, RegistrationRepository>();
+            builder.Services.AddScoped<IImageRepository, ImageRepository>();
             #endregion
 
             #region services
@@ -104,6 +118,7 @@ namespace ShoppingAppAPI
             builder.Services.AddScoped<IReviewServices, ReviewServices>();
             builder.Services.AddScoped<IPaymentServices, PaymentServices>();
             builder.Services.AddScoped<IUserServices, UserServices>();
+            builder.Services.AddScoped<IImageServices, ImageServices>();
             #endregion
 
 
@@ -116,7 +131,7 @@ namespace ShoppingAppAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("AllowSpecificOrigin");
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoppingAppAPI.Models;
+using ShoppingAppAPI.Models.DB_Models;
 
 namespace ShoppingAppAPI.Contexts
 {
@@ -22,6 +23,7 @@ namespace ShoppingAppAPI.Contexts
         public DbSet<Refund> Refunds { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<User> Users { get; set;  }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

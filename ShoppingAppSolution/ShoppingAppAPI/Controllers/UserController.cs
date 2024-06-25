@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingAppAPI.Exceptions;
@@ -23,6 +24,7 @@ namespace ShoppingAppAPI.Controllers
             _sellerService = sellerService;
         }
 
+        [EnableCors("AllowSpecificOrigin")]
         [HttpPost("CustomerLogin")]
         [ProducesResponseType(typeof(LoginReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
@@ -50,7 +52,7 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
-
+        [EnableCors("AllowSpecificOrigin")]
         [HttpPost("CustomerRegister")]
         [ProducesResponseType(typeof(LoginReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
@@ -74,7 +76,7 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
-
+        [EnableCors("AllowSpecificOrigin")]
         [HttpPost("SellerLogin")]
         [ProducesResponseType(typeof(LoginReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
@@ -102,7 +104,7 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
-
+        [EnableCors("AllowSpecificOrigin")]
         [HttpPost("SellerRegister")]
         [ProducesResponseType(typeof(LoginReturnDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
@@ -126,6 +128,7 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
+        [EnableCors("AllowSpecificOrigin")]
         [Authorize(Roles = "Customer")]
         [HttpPut("UpdateCustomerProfile")]
         [ProducesResponseType(typeof(CustomerDTO), StatusCodes.Status200OK)]
@@ -146,7 +149,7 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
-
+        [EnableCors("AllowSpecificOrigin")]
         [Authorize(Roles = "Seller")]
         [HttpPut("UpdateSellerProfile")]
         [ProducesResponseType(typeof(SellerDTO), StatusCodes.Status200OK)]
@@ -161,6 +164,24 @@ namespace ShoppingAppAPI.Controllers
             catch (UnableToUpdateItemException ex)
             {
                 return UnprocessableEntity(new ErrorModel(422, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+
+        [EnableCors("AllowSpecificOrigin")]
+        [Authorize(Roles = "Customer")]
+        [HttpGet("GetCustomerProfile")]
+        [ProducesResponseType(typeof(CustomerDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<CustomerDTO>> GetCustomerProfile(int UserID)
+        {
+            try
+            {
+                var result = await _customerService.GetCustomerProfile(UserID);
+                return Ok(result);
             }
             catch (Exception ex)
             {

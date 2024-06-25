@@ -20,7 +20,7 @@ namespace ShoppingAppTest.Service_Tests
     {
         private ShoppingAppContext _context;
         private IRepository<int, Payment> _paymentRepository;
-        private IRepository<int, Order> _orderRepository;
+        private IOrderRepository _orderRepository;
         private PaymentServices _paymentServices;
 
         private ShoppingAppContext GetInMemoryDbContext()

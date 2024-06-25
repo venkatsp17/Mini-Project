@@ -57,5 +57,18 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToUpdateItemException(ex.Message);
             }
         }
+
+        public async Task<CustomerDTO> GetCustomerProfile(int UserID)
+        {
+            try
+            {
+                Customer customer = await _customerRepository.GetCustomerByUserID(UserID);
+                return CustomerMapper.MapToCustomerDTO(customer);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace ShoppingAppTest.Service_Tests
     public class OrderServicesTests
     {
         private ShoppingAppContext _context;
-        private IRepository<int, Order> _orderRepository;
+        private IOrderRepository _orderRepository;
         private IRepository<int, Refund> _refundRepository;
         private IRepository<int, CartItem> _cartItemRepository;
         private IOrderDetailRepository _orderDetailRepository;
