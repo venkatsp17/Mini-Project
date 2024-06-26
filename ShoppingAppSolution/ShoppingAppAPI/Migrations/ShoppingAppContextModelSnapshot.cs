@@ -67,6 +67,10 @@ namespace ShoppingAppAPI.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CartItemID");
 
                     b.HasIndex("CartID");
@@ -238,6 +242,10 @@ namespace ShoppingAppAPI.Migrations
 
                     b.Property<int>("SellerID")
                         .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderDetailID");
 

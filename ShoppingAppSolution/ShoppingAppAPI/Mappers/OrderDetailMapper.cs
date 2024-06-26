@@ -2,6 +2,7 @@
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Models.DTO_s.OrderDetail_DTO;
 using ShoppingAppAPI.Models.DTO_s.Order_DTO_s;
+using ShoppingAppAPI.Models.DTO_s;
 
 namespace ShoppingAppAPI.Mappers
 {
@@ -16,6 +17,8 @@ namespace ShoppingAppAPI.Mappers
                ProductID = orderDetail.ProductID,
                Quantity = orderDetail.Quantity,
                Price = orderDetail.Price,
+               Size = orderDetail.Size,
+               Product = ProductMapper.MapToCustomerProductDTO1(orderDetail.Product),
             };
         }
     }

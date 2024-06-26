@@ -16,6 +16,7 @@ namespace ShoppingAppAPI.Mappers
                     ProductID = ci.ProductID,
                     Quantity = ci.Quantity,
                     Price = ci.Price,
+                    Size = ci.Size,
                     CartID = ci.CartID,
                 }).ToList()
             };

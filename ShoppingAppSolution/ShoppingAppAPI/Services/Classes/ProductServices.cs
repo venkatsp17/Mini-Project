@@ -5,7 +5,6 @@ using ShoppingAppAPI.Models.DTO_s;
 using ShoppingAppAPI.Models.DTO_s.Product_DTO_s;
 using ShoppingAppAPI.Repositories.Interfaces;
 using ShoppingAppAPI.Services.Interfaces;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ShoppingAppAPI.Services.Classes
 {
@@ -147,6 +146,26 @@ namespace ShoppingAppAPI.Services.Classes
             {
                 throw new UnableToUpdateItemException(ex.Message);
             }
+        }
+
+
+
+        public async Task<IEnumerable<CustomerGetProductDTO>> GetAllProducts(int page, int pageSize)
+        {
+            try
+            {
+                var products = await _productRepository.GetAllProductsAsync(page, pageSize);
+                if (products.Count() == 0)
+                {
+                    throw new NoAvailableItemException("Products");
+                }
+                return products.Select(p => ProductMapper.MapToCustomerProductDTO(p));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
     }
 }

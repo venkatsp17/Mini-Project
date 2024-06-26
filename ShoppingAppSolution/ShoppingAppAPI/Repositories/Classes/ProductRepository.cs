@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using ShoppingAppAPI.Contexts;
 using ShoppingAppAPI.Exceptions;
 using ShoppingAppAPI.Models;
@@ -88,6 +89,16 @@ namespace ShoppingAppAPI.Repositories.Classes
         public async Task<Product> GetProductByName(string productName)
         {
             return await _context.Products.Include(p => p.Seller).Include(p => p.Reviews).FirstOrDefaultAsync(c => c.Name == productName);
+        }
+
+        public async Task<IEnumerable<Product>> GetAllProductsAsync(int page, int pageSize)
+        {
+            return await _context.Products
+                .Include(p => p.Reviews)
+                .Include(p => p.Seller)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
     }
 }

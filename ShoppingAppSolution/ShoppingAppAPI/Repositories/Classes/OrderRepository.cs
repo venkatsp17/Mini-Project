@@ -83,7 +83,7 @@ namespace ShoppingAppAPI.Repositories.Classes
 
         public async Task<IEnumerable<Order>> GetCustomerOrders(int CustomerID)
         {
-            return await _context.Orders.Include(o => o.OrderDetails).Include(o => o.Customer).Where(o=>o.CustomerID==CustomerID).ToListAsync();
+            return await _context.Orders.Include(o => o.OrderDetails).ThenInclude(p => p.Product).Include(o => o.Customer).Where(o=>o.CustomerID==CustomerID).ToListAsync();
         }
     }
 }

@@ -39,6 +39,5 @@ namespace ShoppingAppAPI.Mappers
                 OrderDetails = order.OrderDetails.Select(od => OrderDetailMapper.MapToReturnOrderDetailDTO(od)).ToList(),
             };
         }
-
     }
 }

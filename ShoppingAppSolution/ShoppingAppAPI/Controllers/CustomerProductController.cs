@@ -61,5 +61,26 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
+
+
+        [HttpGet("GetAllProducts")]
+        [ProducesResponseType(typeof(IEnumerable<CustomerGetProductDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<CustomerGetProductDTO>>> GetAllProducts(int page, int pageSize)
+        {
+            try
+            {
+                var result = await _productServices.GetAllProducts(page, pageSize);
+                return Ok(result);
+            }
+            catch (NoAvailableItemException ex)
+            {
+                return NotFound(new ErrorModel(404, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
     }
 }

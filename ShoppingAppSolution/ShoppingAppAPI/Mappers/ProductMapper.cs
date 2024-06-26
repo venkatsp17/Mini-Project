@@ -48,5 +48,19 @@ namespace ShoppingAppAPI.Mappers
                 }).ToList(),
             };
         }
+
+        public static CustomerGetProductDTO1 MapToCustomerProductDTO1(Product product)
+        {
+            return new CustomerGetProductDTO1
+            {
+                ProductID = product.ProductID,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                CategoryID = product.CategoryID,
+                Brand = product.Brand,
+                Image_URL = product.Image_URL,
+            };
+        }
     }
 }

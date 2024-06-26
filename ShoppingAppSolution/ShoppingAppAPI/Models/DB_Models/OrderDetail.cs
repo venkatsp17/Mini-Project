@@ -20,6 +20,8 @@ namespace ShoppingAppAPI.Models
         //public decimal Unit_Price { get; set; } // Old column
         [Required]
         public decimal Price { get; set; } // New column
+        [Required]
+        public string Size { get; set; }
         public Order Order { get; set; }
         public Product Product { get; set; }
         public Seller Seller { get; set; }

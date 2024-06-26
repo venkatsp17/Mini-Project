@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ShoppingAppAPI.Models.DTO_s.Product_DTO_s;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoppingAppAPI.Models.DTO_s.OrderDetail_DTO
 {
@@ -10,6 +11,9 @@ namespace ShoppingAppAPI.Models.DTO_s.OrderDetail_DTO
         public int Quantity { get; set; }
         public decimal Price { get; set; }
 
+        public string Size { get; set; }
+
+        public CustomerGetProductDTO1 Product { get; set; }
 
     }
 }

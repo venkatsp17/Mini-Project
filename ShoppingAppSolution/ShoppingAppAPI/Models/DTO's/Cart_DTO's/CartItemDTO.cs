@@ -9,11 +9,13 @@ namespace ShoppingAppAPI.Models.DTO_s.Cart_DTO_s
         public int Quantity { get; set; }
         public double Price { get; set; }
         public int CartID { get; set; }
+        public string Size { get; set; }
     }
 
     public class CartItemGetDTO
     {
         public int ProductID { get; set; }
         public int Quantity { get; set; }
+        public string Size { get; set; }
     }
 }

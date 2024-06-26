@@ -210,7 +210,7 @@ namespace ShoppingAppAPI.Services.Classes
         {
             try
             {
-                IEnumerable<Order> orders = await _orderRepository.Get();
+                IEnumerable<Order> orders = await _orderRepository.GetCustomerOrders(CustomerID);
                 if (orders.Count() == 0)
                 {
                     throw new NoAvailableItemException("Products");

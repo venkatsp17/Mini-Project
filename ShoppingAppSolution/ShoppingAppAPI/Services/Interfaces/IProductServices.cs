@@ -14,5 +14,7 @@ namespace ShoppingAppAPI.Services.Interfaces
 
         Task<SellerGetProductDTO> UpdateProductStock(int NewStock, int ProductID);
 
+        Task<IEnumerable<CustomerGetProductDTO>> GetAllProducts(int page, int pageSize);
+
     }
 }

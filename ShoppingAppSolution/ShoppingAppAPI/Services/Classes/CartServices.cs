@@ -61,6 +61,7 @@ namespace ShoppingAppAPI.Services.Classes
                     var newItem = new CartItem
                     {
                         CartID = cart.CartID,
+                        Size = cartItem.Size,
                         ProductID = cartItem.ProductID,
                         Quantity = cartItem.Quantity,
                         Price = (double)(product.Price*cartItem.Quantity)
@@ -91,6 +92,7 @@ namespace ShoppingAppAPI.Services.Classes
                             CartID = cart.CartID,
                             ProductID = cartItem.ProductID,
                             Quantity = cartItem.Quantity,
+                            Size = cartItem.Size,
                             Price = (double)(cartItem.Quantity*product.Price)
                         };
                         var newCartItem = await _cartItemRepository.Add(newItem);
