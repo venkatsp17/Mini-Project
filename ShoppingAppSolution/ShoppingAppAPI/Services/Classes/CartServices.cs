@@ -74,7 +74,7 @@ namespace ShoppingAppAPI.Services.Classes
                 }
                 else
                 {
-                    var existingItem = cart.CartItems.FirstOrDefault(ci => ci.ProductID == cartItem.ProductID);
+                    var existingItem = cart.CartItems.FirstOrDefault(ci => ci.ProductID == cartItem.ProductID && ci.Size == cartItem.Size);
                     if (existingItem != null)
                     {
                         existingItem.Quantity += cartItem.Quantity;
@@ -216,14 +216,14 @@ namespace ShoppingAppAPI.Services.Classes
         /// </summary>
         /// <param name="cartID">The ID of the cart.</param>
         /// <returns>The cart details.</returns>
-        public async Task<CartReturnDTO> GetCart(int cartID)
+        public async Task<CartReturnDTO1> GetCart(int customerID)
         {
             try
             {
-                var cart = await _cartRepository.Get(cartID);
+                var cart = await _cartRepository.GetCartByCustomerID(customerID);
                 if (cart == null) throw new NotFoundException("Cart");
 
-                return CartMapper.MapCartToDTO(cart);
+                return CartMapper.MapCartToDTO1(cart);
             }
             catch(NotFoundException ex)
             {

@@ -52,7 +52,7 @@ namespace ShoppingAppAPI.Controllers
             }
         }
 
-        [Authorize]
+ 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(File), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]

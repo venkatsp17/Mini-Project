@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingAppAPI.Exceptions;
@@ -62,7 +63,7 @@ namespace ShoppingAppAPI.Controllers
             }
         }
 
-
+        [EnableCors("AllowSpecificOrigin")]
         [HttpGet("GetAllProducts")]
         [ProducesResponseType(typeof(IEnumerable<CustomerGetProductDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]

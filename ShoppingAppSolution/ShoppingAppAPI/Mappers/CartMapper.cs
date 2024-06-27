@@ -21,5 +21,23 @@ namespace ShoppingAppAPI.Mappers
                 }).ToList()
             };
         }
+
+        public static CartReturnDTO1 MapCartToDTO1(Cart cart)
+        {
+            return new CartReturnDTO1
+            {
+                CartID = cart.CartID,
+                CartItems = cart.CartItems.Select(ci => new CartItemReturnDTO1
+                {
+                    CartItemID = ci.CartItemID,
+                    ProductID = ci.ProductID,
+                    Quantity = ci.Quantity,
+                    Price = ci.Price,
+                    Size = ci.Size,
+                    Product = ProductMapper.MapToCustomerProductDTO1(ci.Product),
+                    CartID = ci.CartID,
+                }).ToList()
+            };
+        }
     }
 }

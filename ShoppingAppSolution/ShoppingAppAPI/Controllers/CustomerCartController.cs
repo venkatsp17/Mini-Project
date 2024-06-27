@@ -86,13 +86,13 @@ namespace ShoppingAppAPI.Controllers
 
         [Authorize]
         [HttpGet("GetCart")]
-        [ProducesResponseType(typeof(CartReturnDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CartReturnDTO1), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<CartReturnDTO>> GetCart(int CartID)
+        public async Task<ActionResult<CartReturnDTO1>> GetCart(int customerID)
         {
             try
             {
-                var result = await _cartServices.GetCart(CartID);
+                var result = await _cartServices.GetCart(customerID);
                 return Ok(result);
             }
             catch (NotFoundException ex)
