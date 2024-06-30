@@ -36,7 +36,7 @@ namespace ShoppingAppAPI.Mappers
                 Shipping_Method = order.Shipping_Method,
                 Shipping_Cost = order.Shipping_Cost,
                 Last_Updated = order.Last_Updated,
-                OrderDetails = order.OrderDetails.Select(od => OrderDetailMapper.MapToReturnOrderDetailDTO(od)).ToList(),
+                OrderDetails = order.OrderDetails.Select(od => OrderDetailMapper.MapToReturnOrderDetailDTO1(od)).ToList(),
             };
         }
     }

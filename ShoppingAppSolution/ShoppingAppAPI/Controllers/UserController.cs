@@ -188,5 +188,23 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
+
+        [EnableCors("AllowSpecificOrigin")]
+        [Authorize(Roles = "Seller")]
+        [HttpGet("GetSellerProfile")]
+        [ProducesResponseType(typeof(CustomerDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<CustomerDTO>> GetSellerProfile(int UserID)
+        {
+            try
+            {
+                var result = await _sellerService.GetSellerProfile(UserID);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
     }
 }

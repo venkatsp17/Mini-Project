@@ -14,6 +14,6 @@ namespace ShoppingAppAPI.Models.DTO_s.Order_DTO_s
         public string Shipping_Method { get; set; }
         public decimal Shipping_Cost { get; set; }
         public DateTime Last_Updated { get; set; }
-        public ICollection<ReturnOrderDetailDTO> OrderDetails { get; set; }
+        public ICollection<ReturnOrderDetailDTO1> OrderDetails { get; set; }
     }
 }

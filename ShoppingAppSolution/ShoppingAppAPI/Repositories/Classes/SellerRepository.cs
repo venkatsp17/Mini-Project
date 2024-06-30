@@ -90,5 +90,10 @@ namespace ShoppingAppAPI.Repositories.Classes
         {
             return await _context.Sellers.FirstOrDefaultAsync(s => s.Email == email);
         }
+
+        public async Task<Seller> GetSellerByUserID(int userID)
+        {
+            return await _context.Sellers.FirstOrDefaultAsync(s => s.UserID == userID);
+        }
     }
 }

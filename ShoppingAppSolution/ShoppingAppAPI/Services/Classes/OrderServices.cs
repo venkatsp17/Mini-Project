@@ -81,8 +81,10 @@ namespace ShoppingAppAPI.Services.Classes
                         ProductID = od.ProductID,
                         Quantity = od.Quantity,
                         OrderID = newOrder.OrderID,
+                        Size = od.Size,
                         SellerID = od.Product.SellerID,
                         Price = (decimal)od.Price,
+
                     }).ToList();
 
                     ICollection<OrderDetail> newOrderDetails = new List<OrderDetail>(); ;
@@ -151,7 +153,7 @@ namespace ShoppingAppAPI.Services.Classes
         /// <param name="SellerID">To fetch orders of particular seller using ID</param>
         /// <returns>Return necessary order details for seller</returns>
         /// <exception cref="NoAvailableItemException">Thrown when order not found.</exception>
-        public async Task<IEnumerable<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID)
+        public async Task<PaginatedResult<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID, int offset, int limit)
         {
             try
             {
@@ -162,18 +164,32 @@ namespace ShoppingAppAPI.Services.Classes
                 }
 
                 var activeOrders = ordersDetails
-                    .Where(od => od.Order.Status == OrderStatus.Shipped ||
-                                 od.Order.Status == OrderStatus.Pending ||
+                    .Where(od => od.Order.Status == OrderStatus.Pending ||
                                  od.Order.Status == OrderStatus.Processing)
                     .Select(od => od.Order)
                     .Distinct();
-                return activeOrders.Select(o => OrderMapper.MapToSellerOrderReturnDTO(o));
+
+                var paginatedOrders = activeOrders
+                    .Skip(offset)
+                    .Take(limit)
+                    .ToList();
+
+                var totalCount = activeOrders.Count();
+
+                var result = new PaginatedResult<SellerOrderReturnDTO>
+                {
+                    Items = paginatedOrders.Select(o => OrderMapper.MapToSellerOrderReturnDTO(o)).ToList(),
+                    TotalCount = totalCount
+                };
+
+                return result;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message); 
+                throw new Exception(ex.Message);
             }
         }
+
 
 
         public async Task<IEnumerable<CustomerOrderReturnDTO>> ViewAllCustomerActiveOrders(int CustomerID)

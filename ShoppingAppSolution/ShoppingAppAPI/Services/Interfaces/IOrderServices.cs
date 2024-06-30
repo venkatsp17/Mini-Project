@@ -6,7 +6,7 @@ namespace ShoppingAppAPI.Services.Interfaces
 {
     public interface IOrderServices
     {
-        Task<IEnumerable<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID);
+        Task<PaginatedResult<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID, int offset = 0, int limit = 10);
 
         Task<IEnumerable<CustomerOrderReturnDTO>> ViewAllCustomerActiveOrders(int CustomerID);
 

@@ -69,5 +69,18 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new UnableToUpdateItemException("Unable to update seller profile."+ ex);
             }
         }
+
+        public async Task<SellerDTO> GetSellerProfile(int UserID)
+        {
+            try
+            {
+                Seller seller = await _sellerRepository.GetSellerByUserID(UserID);
+                return SellerMapper.MapToSellerDTO(seller);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace ShoppingAppAPI.Models.DTO_s.Order_DTO_s
         public string Shipping_Method { get; set; }
 
         [Required(ErrorMessage = "Shipping_Cost is required")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Shipping_Cost must be greater than zero")]
+        [Range(0, double.MaxValue, ErrorMessage = "Shipping_Cost must be greater than zero")]
         public decimal Shipping_Cost { get; set; }
     }
 

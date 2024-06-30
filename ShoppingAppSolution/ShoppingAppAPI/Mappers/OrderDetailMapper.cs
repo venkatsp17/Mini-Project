@@ -18,7 +18,21 @@ namespace ShoppingAppAPI.Mappers
                Quantity = orderDetail.Quantity,
                Price = orderDetail.Price,
                Size = orderDetail.Size,
-               Product = ProductMapper.MapToCustomerProductDTO1(orderDetail.Product),
+               Product = ProductMapper.MapToSellerProductDTO(orderDetail.Product),
+            };
+        }
+
+        public static ReturnOrderDetailDTO1 MapToReturnOrderDetailDTO1(OrderDetail orderDetail)
+        {
+            return new ReturnOrderDetailDTO1
+            {
+                OrderDetailID = orderDetail.OrderDetailID,
+                OrderID = orderDetail.OrderID,
+                ProductID = orderDetail.ProductID,
+                Quantity = orderDetail.Quantity,
+                Price = orderDetail.Price,
+                Size = orderDetail.Size,
+                Product = ProductMapper.MapToCustomerProductDTO1(orderDetail.Product),
             };
         }
     }

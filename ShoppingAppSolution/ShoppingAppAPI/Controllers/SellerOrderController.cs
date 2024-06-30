@@ -25,11 +25,11 @@ namespace ShoppingAppAPI.Controllers
         [HttpGet("ViewAllActiveOrders")]
         [ProducesResponseType(typeof(IEnumerable<SellerOrderReturnDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<IEnumerable<SellerOrderReturnDTO>>> ViewAllActiveOrders(int SellerID)
+        public async Task<ActionResult<IEnumerable<SellerOrderReturnDTO>>> ViewAllActiveOrders(int SellerID, int offset = 0, int limit = 10)
         {
             try
             {
-                var result = await _orderServices.ViewAllSellerActiveOrders(SellerID);
+                var result = await _orderServices.ViewAllSellerActiveOrders(SellerID, offset, limit);
                 return Ok(result);
             }
             catch (NoAvailableItemException ex)

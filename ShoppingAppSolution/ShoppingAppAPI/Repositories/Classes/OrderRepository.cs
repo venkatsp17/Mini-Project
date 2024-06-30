@@ -68,7 +68,7 @@ namespace ShoppingAppAPI.Repositories.Classes
         /// <exception cref="NotFoundException">Thrown when the order is not found.</exception>
         public async Task<Order> Get(int key)
         {
-            return await _context.Orders.Include(o => o.OrderDetails).Include(o => o.Customer).FirstOrDefaultAsync(c => c.OrderID == key) ?? throw new NotFoundException("Order");
+            return await _context.Orders.Include(o => o.OrderDetails).ThenInclude(p => p.Product).Include(o => o.Customer).FirstOrDefaultAsync(c => c.OrderID == key) ?? throw new NotFoundException("Order");
         }
 
         /// <summary>
