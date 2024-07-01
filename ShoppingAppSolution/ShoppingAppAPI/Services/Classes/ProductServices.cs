@@ -2,9 +2,12 @@
 using ShoppingAppAPI.Mappers;
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Models.DTO_s;
+using ShoppingAppAPI.Models.DTO_s.Order_DTO_s;
 using ShoppingAppAPI.Models.DTO_s.Product_DTO_s;
+using ShoppingAppAPI.Repositories.Classes;
 using ShoppingAppAPI.Repositories.Interfaces;
 using ShoppingAppAPI.Services.Interfaces;
+using static ShoppingAppAPI.Models.Enums;
 
 namespace ShoppingAppAPI.Services.Classes
 {
@@ -166,6 +169,43 @@ namespace ShoppingAppAPI.Services.Classes
                 throw new Exception(ex.Message);
             }
 
+        }
+
+
+        public async Task<PaginatedResult<SellerGetProductDTO>> ViewAllSellerProducts(int SellerID, int offset, int limit)
+        {
+            try
+            {
+                IEnumerable<Product> products = await _productRepository.Get();
+                if (!products.Any())
+                {
+                    throw new NoAvailableItemException("Orders");
+                }
+
+                var filteredProducts = products
+                    .Where(p => p.SellerID == SellerID)
+                    .OrderBy(p => p.ProductID)
+                    .ToList();
+
+                var paginatedProducts = filteredProducts
+                    .Skip(offset)
+                    .Take(limit)
+                    .ToList();
+
+                var totalCount = products.Count();
+
+                var result = new PaginatedResult<SellerGetProductDTO>
+                {
+                    Items = paginatedProducts.Select(o => ProductMapper.MapToSellerProductDTO(o)).ToList(),
+                    TotalCount = totalCount
+                };
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

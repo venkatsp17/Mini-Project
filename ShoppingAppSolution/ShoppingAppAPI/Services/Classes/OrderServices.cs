@@ -2,6 +2,7 @@
 using ShoppingAppAPI.Mappers;
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Models.DTO_s.Order_DTO_s;
+using ShoppingAppAPI.Models.DTO_s.Product_DTO_s;
 using ShoppingAppAPI.Repositories.Interfaces;
 using ShoppingAppAPI.Services.Interfaces;
 using static ShoppingAppAPI.Models.Enums;
@@ -16,6 +17,8 @@ namespace ShoppingAppAPI.Services.Classes
         private readonly ICartRepository _cartRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICartServices _cartServices;
+        private readonly IProductServices _productServices;
+        private readonly IProductRepository _productRepository;
 
         /// <summary>
         /// Constructor for OrderServices class.
@@ -25,7 +28,9 @@ namespace ShoppingAppAPI.Services.Classes
             IOrderDetailRepository orderDetailRepository,
             ICartRepository cartRepository,
             ICartServices cartServices,
-            IRepository<int, Refund> refundRepository
+            IRepository<int, Refund> refundRepository,
+            IProductServices productServices,
+            IProductRepository productRepository
             )
         { 
             _orderRepository = orderRepository;
@@ -34,6 +39,8 @@ namespace ShoppingAppAPI.Services.Classes
             _cartRepository = cartRepository;
             _cartServices = cartServices;
             _refundRepository = refundRepository;
+            _productServices = productServices;
+            _productRepository = productRepository;
         }
         /// <summary>
         /// Place Order from collecting details from cart.
@@ -91,11 +98,21 @@ namespace ShoppingAppAPI.Services.Classes
                     foreach (var orderDetail in orderDetails)
                     {
                          OrderDetail newOrderDetail = await _orderDetailRepository.Add(orderDetail);
-                         if(newOrderDetail == null)
-                         {
+                        if (newOrderDetail == null)
+                        {
                             throw new UnableToAddItemException("Unable to Create Order at this moment!");
+                        }
+                        Product product = await _productRepository.Get(orderDetail.ProductID);
+                         if(product == null)
+                         {
+                            throw new UnableToAddItemException("Unable to process order at this moment!");
                          }
-                         newOrderDetails.Add(newOrderDetail);
+                         SellerGetProductDTO product1 = await _productServices.UpdateProductStock(product.Stock_Quantity - orderDetail.Quantity, product.ProductID);
+                        if (product1 == null)
+                        {
+                            throw new UnableToAddItemException("Unable to process order at this moment!");
+                        }
+                        newOrderDetails.Add(newOrderDetail);
                     }
 
                     newOrder.OrderDetails = newOrderDetails;

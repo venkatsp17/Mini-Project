@@ -1,5 +1,6 @@
 ﻿using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Models.DTO_s;
+using ShoppingAppAPI.Models.DTO_s.Order_DTO_s;
 using ShoppingAppAPI.Models.DTO_s.Product_DTO_s;
 
 namespace ShoppingAppAPI.Services.Interfaces
@@ -15,6 +16,8 @@ namespace ShoppingAppAPI.Services.Interfaces
         Task<SellerGetProductDTO> UpdateProductStock(int NewStock, int ProductID);
 
         Task<IEnumerable<CustomerGetProductDTO>> GetAllProducts(int page, int pageSize);
+
+        Task<PaginatedResult<SellerGetProductDTO>> ViewAllSellerProducts(int SellerID, int offset, int limit);
 
     }
 }

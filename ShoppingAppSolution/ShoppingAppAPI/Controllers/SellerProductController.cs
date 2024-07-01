@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingAppAPI.Exceptions;
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Models.DTO_s;
+using ShoppingAppAPI.Models.DTO_s.Order_DTO_s;
 using ShoppingAppAPI.Models.DTO_s.Product_DTO_s;
 using ShoppingAppAPI.Services.Classes;
 using ShoppingAppAPI.Services.Interfaces;
@@ -98,5 +100,27 @@ namespace ShoppingAppAPI.Controllers
                 return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
             }
         }
+
+        [Authorize(Roles = "Seller")]
+        [HttpGet("ViewAllProducts")]
+        [ProducesResponseType(typeof(IEnumerable<SellerGetProductDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<SellerGetProductDTO>>> ViewAllProducts(int SellerID, int offset = 0, int limit = 10)
+        {
+            try
+            {
+                var result = await _productServices.ViewAllSellerProducts(SellerID, offset, limit);
+                return Ok(result);
+            }
+            catch (NoAvailableItemException ex)
+            {
+                return NotFound(new ErrorModel(404, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+
     }
 }
