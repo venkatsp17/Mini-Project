@@ -14,6 +14,7 @@ namespace ShoppingAppAPI.Models.DTO_s
         public int CategoryID { get; set; }
         public string Brand { get; set; }
         public string Image_URL { get; set; }
+        public int Stock {  get; set; }
         public SellerDTO Seller { get; set; }
         public ICollection<ReviewReturnDTO> Reviews { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using ShoppingAppAPI.Exceptions;
+﻿using Microsoft.EntityFrameworkCore;
+using ShoppingAppAPI.Exceptions;
 using ShoppingAppAPI.Mappers;
 using ShoppingAppAPI.Models;
 using ShoppingAppAPI.Models.DTO_s;
@@ -14,13 +15,15 @@ namespace ShoppingAppAPI.Services.Classes
     public class ProductServices : IProductServices
     {
         private readonly IProductRepository _productRepository;
+        private readonly IOrderDetailRepository _orderDetailRepository;
         /// <summary>
         /// Constructor for ProductServices class.
         /// </summary>
         /// <param name="productRepository">Product repository dependency.</param>
-        public ProductServices(IProductRepository productRepository)
+        public ProductServices(IProductRepository productRepository, IOrderDetailRepository orderDetailRepository)
         {
             _productRepository = productRepository;
+            _orderDetailRepository = orderDetailRepository;
         }
         /// <summary>
         /// Adds a new product.
@@ -153,16 +156,22 @@ namespace ShoppingAppAPI.Services.Classes
 
 
 
-        public async Task<IEnumerable<CustomerGetProductDTO>> GetAllProducts(int page, int pageSize)
+        public async Task<IEnumerable<CustomerGetProductDTO>> GetAllProducts(int page, int pageSize, string query)
         {
             try
             {
-                var products = await _productRepository.GetAllProductsAsync(page, pageSize);
-                if (products.Count() == 0)
+                if(query == "null")
                 {
-                    throw new NoAvailableItemException("Products");
+                    query = null;
                 }
-                return products.Select(p => ProductMapper.MapToCustomerProductDTO(p));
+                var products = await _productRepository.GetAllProductsAsync();
+                var filteredProducts = products
+                  .Where(p => string.IsNullOrEmpty(query) || p.Name.Contains(query, StringComparison.OrdinalIgnoreCase))
+                  .ToList();
+                var paginated = filteredProducts
+                                .Skip((page - 1) * pageSize)
+                                .Take(pageSize);
+                return paginated.Select(p => ProductMapper.MapToCustomerProductDTO(p));
             }
             catch (Exception ex)
             {
@@ -172,7 +181,7 @@ namespace ShoppingAppAPI.Services.Classes
         }
 
 
-        public async Task<PaginatedResult<SellerGetProductDTO>> ViewAllSellerProducts(int SellerID, int offset, int limit)
+        public async Task<PaginatedResult<SellerGetProductDTO>> ViewAllSellerProducts(int SellerID, int offset, int limit, string searchQuery)
         {
             try
             {
@@ -181,18 +190,21 @@ namespace ShoppingAppAPI.Services.Classes
                 {
                     throw new NoAvailableItemException("Orders");
                 }
-
+                if (searchQuery == "null")
+                {
+                    searchQuery = null;
+                }
                 var filteredProducts = products
-                    .Where(p => p.SellerID == SellerID)
-                    .OrderBy(p => p.ProductID)
+                    .Where(p => (p.SellerID == SellerID) && (string.IsNullOrEmpty(searchQuery) || p.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)))
                     .ToList();
 
                 var paginatedProducts = filteredProducts
                     .Skip(offset)
                     .Take(limit)
+                    .OrderBy(p => p.ProductID)
                     .ToList();
 
-                var totalCount = products.Count();
+                var totalCount = filteredProducts.Count();
 
                 var result = new PaginatedResult<SellerGetProductDTO>
                 {
@@ -201,6 +213,36 @@ namespace ShoppingAppAPI.Services.Classes
                 };
 
                 return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public async Task<IEnumerable<TopSellingProductDTO>> ViewAllTopSellingSellerProducts(int SellerID)
+        {
+            try
+            {
+                var products = await _orderDetailRepository.GetSellerTopProducts(SellerID);
+                if (!products.Any())
+                {
+                    throw new NoAvailableItemException("Products");
+                }
+                var topSellingProducts = products
+                                    .GroupBy(od => new { od.ProductID, ProductName = od.Product.Name, CategoryName = od.Product.Category.Name })
+                                    .Select(g => new TopSellingProductDTO
+                                     {
+                                          ProductID = g.Key.ProductID,
+                                          ProductName = g.Key.ProductName,
+                                          CategoryName = g.Key.CategoryName,
+                                          QuantitySold = g.Sum(od => od.Quantity),
+                                          TotalRevenue = g.Sum(od => od.Price * od.Quantity)
+                                     })
+                                     .OrderByDescending(dto => dto.QuantitySold)
+                                     .ToList();
+               return topSellingProducts;
             }
             catch (Exception ex)
             {

@@ -170,7 +170,7 @@ namespace ShoppingAppAPI.Services.Classes
         /// <param name="SellerID">To fetch orders of particular seller using ID</param>
         /// <returns>Return necessary order details for seller</returns>
         /// <exception cref="NoAvailableItemException">Thrown when order not found.</exception>
-        public async Task<PaginatedResult<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID, int offset, int limit)
+        public async Task<PaginatedResult<SellerOrderReturnDTO>> ViewAllSellerActiveOrders(int SellerID, int offset, int limit, string searchQuery)
         {
             try
             {
@@ -179,12 +179,15 @@ namespace ShoppingAppAPI.Services.Classes
                 {
                     throw new NoAvailableItemException("Orders");
                 }
-
+                if(searchQuery == "null")
+                {
+                    searchQuery = null;
+                }
                 var activeOrders = ordersDetails
-                    .Where(od => od.Order.Status == OrderStatus.Pending ||
-                                 od.Order.Status == OrderStatus.Processing)
-                    .Select(od => od.Order)
-                    .Distinct();
+                                    .Where(od => (od.Order.Status == OrderStatus.Pending || od.Order.Status == OrderStatus.Processing)
+                                    && (string.IsNullOrEmpty(searchQuery) || od.Order.OrderID.ToString().Contains(searchQuery)))
+                                    .Select(od => od.Order)
+                                    .Distinct();
 
                 var paginatedOrders = activeOrders
                     .Skip(offset)

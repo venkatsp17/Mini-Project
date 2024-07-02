@@ -93,5 +93,14 @@ namespace ShoppingAppAPI.Repositories.Classes
                 .Where(od => od.SellerID == SellerID)
                 .ToListAsync();
         }
+
+
+        public async Task<IEnumerable<OrderDetail>> GetSellerTopProducts(int SellerID)
+        {
+            return await _context.OrderDetails
+                .Include(od => od.Order).Include(od => od.Product).ThenInclude(p => p.Category)
+                .Where(od => od.SellerID == SellerID)
+                .ToListAsync();
+        }
     }
 }

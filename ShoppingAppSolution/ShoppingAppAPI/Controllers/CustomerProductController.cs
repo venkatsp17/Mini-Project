@@ -67,11 +67,11 @@ namespace ShoppingAppAPI.Controllers
         [HttpGet("GetAllProducts")]
         [ProducesResponseType(typeof(IEnumerable<CustomerGetProductDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<IEnumerable<CustomerGetProductDTO>>> GetAllProducts(int page, int pageSize)
+        public async Task<ActionResult<IEnumerable<CustomerGetProductDTO>>> GetAllProducts(int page, int pageSize, string query)
         {
             try
             {
-                var result = await _productServices.GetAllProducts(page, pageSize);
+                var result = await _productServices.GetAllProducts(page, pageSize, query);
                 return Ok(result);
             }
             catch (NoAvailableItemException ex)

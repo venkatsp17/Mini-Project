@@ -31,6 +31,7 @@ namespace ShoppingAppAPI.Mappers
             {
                 ProductID = product.ProductID,
                 Name = product.Name,
+                Stock = product.Stock_Quantity,
                 Description = product.Description,
                 Price = product.Price,
                 CategoryID = product.CategoryID,

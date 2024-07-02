@@ -105,11 +105,33 @@ namespace ShoppingAppAPI.Controllers
         [HttpGet("ViewAllProducts")]
         [ProducesResponseType(typeof(IEnumerable<SellerGetProductDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<IEnumerable<SellerGetProductDTO>>> ViewAllProducts(int SellerID, int offset = 0, int limit = 10)
+        public async Task<ActionResult<IEnumerable<SellerGetProductDTO>>> ViewAllProducts(int SellerID, int offset = 0, int limit = 10, string searchQuery="")
         {
             try
             {
-                var result = await _productServices.ViewAllSellerProducts(SellerID, offset, limit);
+                var result = await _productServices.ViewAllSellerProducts(SellerID, offset, limit, searchQuery);
+                return Ok(result);
+            }
+            catch (NoAvailableItemException ex)
+            {
+                return NotFound(new ErrorModel(404, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ErrorModel(500, $"An unexpected error occurred. {ex.Message}"));
+            }
+        }
+
+
+        [Authorize(Roles = "Seller")]
+        [HttpGet("ViewAllTopSellingProducts")]
+        [ProducesResponseType(typeof(IEnumerable<SellerGetProductDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<SellerGetProductDTO>>> ViewAllTopSellingProducts(int SellerID)
+        {
+            try
+            {
+                var result = await _productServices.ViewAllTopSellingSellerProducts(SellerID);
                 return Ok(result);
             }
             catch (NoAvailableItemException ex)

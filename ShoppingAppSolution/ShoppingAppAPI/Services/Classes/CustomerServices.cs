@@ -44,7 +44,7 @@ namespace ShoppingAppAPI.Services.Classes
                 customer.Address = updateDTO.Address;
                 customer.Email = updateDTO.Email;
                 customer.Name = updateDTO.Name;
-                customer.Profile_Picture_URL = updateDTO.Profile_Picture_URL;
+                customer.Profile_Picture_URL = string.IsNullOrEmpty(updateDTO.Profile_Picture_URL)?customer.Profile_Picture_URL: updateDTO.Profile_Picture_URL;
                 Customer updatedCustomer = await _customerRepository.Update(customer);
                 if (updatedCustomer == null)
                 {

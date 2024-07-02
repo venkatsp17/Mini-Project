@@ -6,6 +6,6 @@ namespace ShoppingAppAPI.Repositories.Interfaces
     {
         Task<Product> GetProductByName(string productName);
 
-        Task<IEnumerable<Product>> GetAllProductsAsync(int page, int pageSize);
+        Task<IEnumerable<Product>> GetAllProductsAsync();
     }
 }
